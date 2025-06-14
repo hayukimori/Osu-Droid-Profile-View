@@ -1,4 +1,34 @@
-[gd_scene format=3 uid="uid://bh0n57pgmndw7"]
+[gd_scene load_steps=8 format=3 uid="uid://bh0n57pgmndw7"]
+
+[ext_resource type="Script" uid="uid://ch0gf7680dole" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="1_52rat"]
+[ext_resource type="Texture2D" uid="uid://c5cd6oc4uo7dq" path="res://icon.svg" id="2_8ai3w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ai3w"]
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+anti_aliasing = false
+
+[sub_resource type="Gradient" id="Gradient_5r7jo"]
+offsets = PackedFloat32Array(0, 0.438679, 1)
+colors = PackedColorArray(0.748806, 0.738337, 0.168911, 1, 0.959453, 0.439919, 0.641852, 1, 0.223529, 0.235294, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r1h8h"]
+gradient = SubResource("Gradient_5r7jo")
+fill_from = Vector2(0.496753, 0)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dip1f"]
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
+anti_aliasing = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ai3w"]
+font_size = 24
 
 [node name="MainInterface" type="Control"]
 layout_mode = 3
@@ -30,7 +60,99 @@ color = Color(0.0745098, 0.0745098, 0.101961, 1)
 layout_mode = 1
 anchor_right = 1.0
 anchor_bottom = 0.346
-offset_left = 28.0
+offset_left = 22.0
 offset_top = 25.0
-offset_right = -28.0
-offset_bottom = -18.208
+offset_right = -22.0
+offset_bottom = -19.208
+
+[node name="ProfileBanner" type="Panel" parent="ProfileArea"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8ai3w")
+script = ExtResource("1_52rat")
+texture = SubResource("GradientTexture2D_r1h8h")
+metadata/_custom_type_script = "uid://ch0gf7680dole"
+
+[node name="ProfilePicture" type="Panel" parent="ProfileArea"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 27.0
+offset_top = -64.5
+offset_right = 155.0
+offset_bottom = 63.5
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dip1f")
+script = ExtResource("1_52rat")
+corner_detail = 24
+radius_bottom_left = 100
+radius_bottom_right = 100
+radius_top_left = 100
+radius_top_right = 100
+texture = ExtResource("2_8ai3w")
+metadata/_custom_type_script = "uid://ch0gf7680dole"
+
+[node name="ProfileRank_UserInfo" type="Control" parent="ProfileArea"]
+layout_mode = 1
+anchor_left = 0.164
+anchor_top = 0.144
+anchor_right = 0.164
+anchor_bottom = 0.144
+offset_left = 0.255997
+offset_top = -0.0640011
+offset_right = 397.256
+offset_bottom = 98.936
+
+[node name="UsernameLabel" type="Label" parent="ProfileArea/ProfileRank_UserInfo"]
+layout_mode = 0
+offset_top = 15.0
+offset_right = 359.0
+offset_bottom = 49.0
+text = "TheMaximumNameLength"
+label_settings = SubResource("LabelSettings_8ai3w")
+
+[node name="Ranking" type="Control" parent="ProfileArea/ProfileRank_UserInfo"]
+anchors_preset = 0
+offset_top = 49.0
+offset_right = 312.0
+offset_bottom = 105.0
+
+[node name="NationalRankBtn" type="Button" parent="ProfileArea/ProfileRank_UserInfo/Ranking"]
+layout_mode = 0
+offset_right = 156.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 12
+text = "# 01"
+flat = true
+alignment = 0
+expand_icon = true
+
+[node name="GlobalRankBtn" type="Button" parent="ProfileArea/ProfileRank_UserInfo/Ranking"]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 156.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 12
+text = "# 01"
+flat = true
+alignment = 0
+expand_icon = true
+
+[node name="CountryFlagTextureRect" type="TextureRect" parent="ProfileArea"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -129.0
+offset_top = 26.0
+offset_right = -42.0
+offset_bottom = 82.0
+grow_horizontal = 0
+expand_mode = 1
