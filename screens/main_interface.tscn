@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bh0n57pgmndw7"]
+[gd_scene load_steps=11 format=3 uid="uid://bh0n57pgmndw7"]
 
 [ext_resource type="Script" uid="uid://ch0gf7680dole" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="1_52rat"]
 [ext_resource type="Texture2D" uid="uid://c5cd6oc4uo7dq" path="res://icon.svg" id="2_8ai3w"]
+[ext_resource type="Texture2D" uid="uid://cv5suenvxbfqu" path="res://assets/textures/country_flags/br.svg" id="3_5r7jo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ai3w"]
 corner_radius_top_left = 8
@@ -11,8 +12,8 @@ corner_radius_bottom_left = 8
 anti_aliasing = false
 
 [sub_resource type="Gradient" id="Gradient_5r7jo"]
-offsets = PackedFloat32Array(0, 0.438679, 1)
-colors = PackedColorArray(0.748806, 0.738337, 0.168911, 1, 0.959453, 0.439919, 0.641852, 1, 0.223529, 0.235294, 1, 1)
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.339919, 0.446272, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_r1h8h"]
 gradient = SubResource("Gradient_5r7jo")
@@ -29,6 +30,20 @@ anti_aliasing = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_8ai3w"]
 font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5r7jo"]
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r1h8h"]
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+anti_aliasing = false
 
 [node name="MainInterface" type="Control"]
 layout_mode = 3
@@ -124,35 +139,76 @@ offset_top = 49.0
 offset_right = 312.0
 offset_bottom = 105.0
 
-[node name="NationalRankBtn" type="Button" parent="ProfileArea/ProfileRank_UserInfo/Ranking"]
+[node name="National" type="Control" parent="ProfileArea/ProfileRank_UserInfo/Ranking"]
+anchors_preset = 0
+offset_right = 161.0
+offset_bottom = 25.0
+
+[node name="NationalRankLabel" type="Label" parent="ProfileArea/ProfileRank_UserInfo/Ranking/National"]
 layout_mode = 0
+offset_left = 39.0
 offset_right = 156.0
 offset_bottom = 25.0
 theme_override_font_sizes/font_size = 12
 text = "# 01"
-flat = true
-alignment = 0
-expand_icon = true
+vertical_alignment = 1
 
-[node name="GlobalRankBtn" type="Button" parent="ProfileArea/ProfileRank_UserInfo/Ranking"]
+[node name="CountryFlag" type="Panel" parent="ProfileArea/ProfileRank_UserInfo/Ranking/National"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 5.032
+offset_top = -9.356
+offset_right = 32.032
+offset_bottom = 9.644
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5r7jo")
+script = ExtResource("1_52rat")
+radius_bottom_left = 2
+radius_bottom_right = 2
+radius_top_left = 2
+radius_top_right = 2
+texture = ExtResource("3_5r7jo")
+metadata/_custom_type_script = "uid://ch0gf7680dole"
+
+[node name="Global" type="Control" parent="ProfileArea/ProfileRank_UserInfo/Ranking"]
+anchors_preset = 0
+offset_top = 22.0
+offset_right = 161.0
+offset_bottom = 47.0
+
+[node name="GlobalRankLabel" type="Label" parent="ProfileArea/ProfileRank_UserInfo/Ranking/Global"]
 layout_mode = 0
-offset_top = 25.0
+offset_left = 39.0
+offset_top = 3.0
 offset_right = 156.0
-offset_bottom = 50.0
+offset_bottom = 23.0
 theme_override_font_sizes/font_size = 12
 text = "# 01"
-flat = true
-alignment = 0
-expand_icon = true
+vertical_alignment = 1
 
-[node name="CountryFlagTextureRect" type="TextureRect" parent="ProfileArea"]
+[node name="TextureRect" type="TextureRect" parent="ProfileArea/ProfileRank_UserInfo/Ranking/Global"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 32.0
+offset_bottom = 23.0
+expand_mode = 1
+
+[node name="CountryFlagTextureRect" type="Panel" parent="ProfileArea"]
+clip_children = 1
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -129.0
+offset_left = -137.0
 offset_top = 26.0
 offset_right = -42.0
-offset_bottom = 82.0
+offset_bottom = 90.0
 grow_horizontal = 0
-expand_mode = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_r1h8h")
+script = ExtResource("1_52rat")
+texture = ExtResource("3_5r7jo")
+metadata/_custom_type_script = "uid://ch0gf7680dole"
