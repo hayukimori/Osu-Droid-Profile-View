@@ -1,0 +1,136 @@
+[gd_scene load_steps=12 format=3 uid="uid://ckcakf5p6oywd"]
+
+[ext_resource type="Script" uid="uid://ch0gf7680dole" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="1_8itik"]
+[ext_resource type="Texture2D" uid="uid://6oham8ovwhoy" path="res://assets/textures/icons/map_rank_icons/S.png" id="2_6804x"]
+[ext_resource type="Texture2D" uid="uid://e3bc8k7gg60m" path="res://assets/textures/icons/google_material_icons/sports_score_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg" id="3_dnr7j"]
+[ext_resource type="Texture2D" uid="uid://d3cxxulcofsu0" path="res://assets/textures/icons/google_material_icons/target_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" id="4_6xtlw"]
+[ext_resource type="Texture2D" uid="uid://dgymfm2mbj104" path="res://assets/textures/icons/google_material_icons/circle_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" id="5_p4fjk"]
+[ext_resource type="Texture2D" uid="uid://brpxfepiol3b8" path="res://assets/textures/icons/google_material_icons/military_tech_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg" id="6_gg2yq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cnbv1"]
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ki8p0"]
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+anti_aliasing = false
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_vs076"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ru7g0"]
+bg_color = Color(0, 0, 0, 0.592157)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_vs076"]
+font_size = 12
+
+[node name="PlayScore" type="Label"]
+custom_minimum_size = Vector2(0, 64)
+theme_override_styles/normal = SubResource("StyleBoxFlat_cnbv1")
+
+[node name="BackgroundImage" type="Panel" parent="."]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ki8p0")
+script = ExtResource("1_8itik")
+texture = SubResource("CurveXYZTexture_vs076")
+metadata/_custom_type_script = "uid://ch0gf7680dole"
+
+[node name="DarkBGPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ru7g0")
+
+[node name="RankTexture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = -32.0
+offset_right = 73.0
+offset_bottom = 32.0
+grow_vertical = 2
+texture = ExtResource("2_6804x")
+expand_mode = 1
+
+[node name="FilenameLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 18.0
+offset_right = 445.0
+offset_bottom = 47.0
+text = "{filename}"
+label_settings = SubResource("LabelSettings_vs076")
+vertical_alignment = 1
+
+[node name="PlayDetailsButtonsHBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -22.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+
+[node name="MapScore" type="Button" parent="PlayDetailsButtonsHBoxContainer"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 12
+theme_override_font_sizes/font_size = 10
+text = "0"
+icon = ExtResource("3_dnr7j")
+flat = true
+
+[node name="MapAccuracy" type="Button" parent="PlayDetailsButtonsHBoxContainer"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 12
+theme_override_font_sizes/font_size = 10
+text = "0.00%"
+icon = ExtResource("4_6xtlw")
+flat = true
+
+[node name="ComboCount" type="Button" parent="PlayDetailsButtonsHBoxContainer"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 12
+theme_override_font_sizes/font_size = 10
+text = "0.00"
+icon = ExtResource("5_p4fjk")
+flat = true
+
+[node name="MapPP" type="Button" parent="PlayDetailsButtonsHBoxContainer"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 12
+theme_override_font_sizes/font_size = 10
+text = "0.00"
+icon = ExtResource("6_gg2yq")
+flat = true
+
+[node name="BeatmapButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
