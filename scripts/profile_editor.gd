@@ -27,8 +27,6 @@ var old_avatar_request_api_url: String = "https://osudroid.moe/user/avatar/%d.pn
 @export_dir var flags_directory: String = "res://assets/textures/country_flags"
 @export_file("*.png", "*.jpg", "*.webp", "*.svg") var default_profile_picture: String
 
-@export_category("Post content")
-@export var player_data: Dictionary = {}
 
 
 class GeneralTools:
@@ -66,17 +64,17 @@ var gen_tools: GeneralTools = GeneralTools.new()
 
 
 # => Update profile
-func update_profile() -> void:
+func update_profile(player_data: Dictionary) -> void:
 	get_user_pfp(player_data.UserId)
 	update_flags(player_data.Region)
 	set_username(player_data.Username)
 	set_rankings(player_data.CountryRank, player_data.GlobalRank)
-	set_overall_infos()
+	set_overall_infos(player_data)
 
 
 
 # => Set buttons (play count, accuracy, pp, etc) content.
-func set_overall_infos() -> void:
+func set_overall_infos(player_data: Dictionary) -> void:
 	play_count_btn.text = "%d" % player_data.OverallPlaycount
 	overall_score_btn.text = "%s" % gen_tools.format_numbers_dots(int(player_data.OverallScore))
 	accuracy_btn.text = "%.2f" % (player_data.OverallAccuracy * 100) + "%"
@@ -85,7 +83,7 @@ func set_overall_infos() -> void:
 	if player_data.OverallPP == null:
 		pp_btn.text = "0.00"
 	else:
-		pp_btn.text = player_data.OverallPP
+		pp_btn.text = "%.2f" % player_data.OverallPP
 
 
 # => Sets the player's rankings
@@ -110,7 +108,8 @@ func update_flags(region: String) -> void:
 		rank_country_flag_texture_rect.texture = null
 		country_flag_texture_rect.texture = null
 
-	log(flag_path)
+	
+
 
 
 # => Gets User profile picture and send it to the profile picture (TextureRectRounded)
@@ -171,4 +170,3 @@ func _http_image_requester_request_completed(result, _response_code, _headers, b
 	else:
 		var texture = ImageTexture.create_from_image(image)
 		profile_picture_texture_rect.texture = texture
-
