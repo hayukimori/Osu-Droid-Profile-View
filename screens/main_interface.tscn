@@ -1,6 +1,7 @@
-[gd_scene load_steps=42 format=3 uid="uid://bh0n57pgmndw7"]
+[gd_scene load_steps=43 format=3 uid="uid://bh0n57pgmndw7"]
 
 [ext_resource type="Script" uid="uid://ch0gf7680dole" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="1_52rat"]
+[ext_resource type="Script" uid="uid://d2qu2ud8h5337" path="res://scripts/main_interface.gd" id="1_y4wu6"]
 [ext_resource type="Texture2D" uid="uid://c5cd6oc4uo7dq" path="res://icon.svg" id="2_8ai3w"]
 [ext_resource type="Texture2D" uid="uid://cv5suenvxbfqu" path="res://assets/textures/country_flags/br.svg" id="3_5r7jo"]
 [ext_resource type="Texture2D" uid="uid://gbj3tjsqp0dq" path="res://assets/textures/icons/google_material_icons/language_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" id="4_r1h8h"]
@@ -138,6 +139,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_y4wu6")
 
 [node name="BackgroundControl" type="Control" parent="."]
 layout_mode = 1
@@ -785,3 +787,5 @@ text = "000"
 icon = ExtResource("16_vrqfl")
 flat = true
 alignment = 0
+
+[node name="PlayerRequestHTTP" type="HTTPRequest" parent="."]
