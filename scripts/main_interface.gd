@@ -3,6 +3,7 @@ extends Control
 enum SEARCH_TYPE { UID=0, USERNAME=1}
 
 @onready var profile_editor: ProfileEditor = $ProfileEditor
+@onready var list_controller: ListController = $ListController
 @onready var player_requester: HTTPRequest = $PlayerRequestHTTP
 
 @export var username_search_url: String = "https://new.osudroid.moe/api2/frontend/profile-username/%s"
@@ -17,9 +18,7 @@ func _ready() -> void:
 
 # This function calls profile_requester.request, using uid(int) or username(string)
 func getProfile(search_type: SEARCH_TYPE, uid: int = 0, username: String = "") -> void:
-	var current_url: String = ""
-
-	
+	var current_url: String = ""	
 
 	match search_type:
 		SEARCH_TYPE.UID: current_url = uid_search_url % uid
@@ -38,6 +37,7 @@ func getProfile(search_type: SEARCH_TYPE, uid: int = 0, username: String = "") -
 func updateAll(data: Dictionary) -> void:
 	if data:
 		profile_editor.update_profile(data)
+		list_controller.gen_list(data, 0)
 		
 
 

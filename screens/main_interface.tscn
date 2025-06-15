@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bh0n57pgmndw7"]
+[gd_scene load_steps=44 format=3 uid="uid://bh0n57pgmndw7"]
 
 [ext_resource type="Script" uid="uid://ch0gf7680dole" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="1_52rat"]
 [ext_resource type="Script" uid="uid://d2qu2ud8h5337" path="res://scripts/main_interface.gd" id="1_y4wu6"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://o0rh1t5k6nlj" path="res://assets/textures/icons/google_material_icons/star_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg" id="7_d3k2c"]
 [ext_resource type="Texture2D" uid="uid://e3bc8k7gg60m" path="res://assets/textures/icons/google_material_icons/sports_score_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg" id="8_vs076"]
 [ext_resource type="Texture2D" uid="uid://byndrboapcv4w" path="res://assets/textures/icons/google_material_icons/swap_horiz_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg" id="9_vs076"]
-[ext_resource type="PackedScene" uid="uid://ckcakf5p6oywd" path="res://ui_elements/play_score.tscn" id="10_cnbv1"]
 [ext_resource type="FontFile" uid="uid://b7850sj5d4yn1" path="res://assets/fonts/Aller/Aller_Rg.ttf" id="11_ru7g0"]
 [ext_resource type="FontFile" uid="uid://c7de2suwkiku" path="res://assets/fonts/Aller/Aller_Lt.ttf" id="12_vas7u"]
 [ext_resource type="FontFile" uid="uid://448xxgbgvybj" path="res://assets/fonts/Aller/Aller_LtIt.ttf" id="13_ttw16"]
@@ -26,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://d38uqi0d71er4" path="res://assets/textures/icons/ui_icons/slider.png" id="16_vrqfl"]
 [ext_resource type="Texture2D" uid="uid://bxs7ttm4ilw8r" path="res://assets/textures/icons/google_material_icons/close_24dp_FF0000_FILL0_wght400_GRAD0_opsz24.svg" id="17_y4wu6"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ai3w"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_21ah5"]
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -41,7 +40,7 @@ colors = PackedColorArray(0.0708024, 0.299556, 0.973042, 1, 0.16474, 0.397743, 1
 gradient = SubResource("Gradient_5r7jo")
 fill_from = Vector2(0.00974026, 0.983766)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r1h8h"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yxv84"]
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -51,14 +50,14 @@ anti_aliasing = false
 [sub_resource type="LabelSettings" id="LabelSettings_8ai3w"]
 font_size = 24
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5r7jo"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pq0dt"]
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dip1f"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sotf4"]
 corner_radius_top_left = 100
 corner_radius_top_right = 100
 corner_radius_bottom_right = 100
@@ -87,7 +86,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ki8p0"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3wme8"]
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 anti_aliasing = false
@@ -142,6 +141,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_y4wu6")
+username_search_url = "http://localhost:1999/api2/frontend/profile-username/%s"
+uid_search_url = "http://localhost:1999/api2/frontend/profile-uid/%d"
 
 [node name="ProfileEditor" type="Node" parent="." node_paths=PackedStringArray("username_label", "national_rank_label", "global_rank_label", "play_count_btn", "accuracy_btn", "pp_btn", "overall_score_btn", "country_flag_texture_rect", "rank_country_flag_texture_rect", "profile_picture_texture_rect")]
 script = ExtResource("2_21ah5")
@@ -156,8 +157,12 @@ country_flag_texture_rect = NodePath("../ProfileAreaControl/CountryFlagTextureRe
 rank_country_flag_texture_rect = NodePath("../ProfileAreaControl/BasicInfoContainer/UserBasicInfo/Ranking/National/CountryFlag")
 profile_picture_texture_rect = NodePath("../ProfileAreaControl/BasicInfoContainer/ProfilePicture")
 
-[node name="ListController" type="Node" parent="."]
+[node name="ListController" type="Node" parent="." node_paths=PackedStringArray("list_mode_label", "list_mode_btn", "play_list_vbox")]
 script = ExtResource("3_yxv84")
+list_mode_label = NodePath("../GameDataControl/PlaysControl/ListModePanel/ListModeLabel")
+list_mode_btn = NodePath("../GameDataControl/PlaysControl/ListModePanel/Button")
+base_play_score = "uid://ckcakf5p6oywd"
+play_list_vbox = NodePath("../GameDataControl/PlaysControl/PlayListControl/PlayListScrollContainer/PlayListVBoxContainer")
 
 [node name="BackgroundControl" type="Control" parent="."]
 layout_mode = 1
@@ -193,7 +198,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 180.0
 grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_8ai3w")
+theme_override_styles/panel = SubResource("StyleBoxFlat_21ah5")
 script = ExtResource("1_52rat")
 corner_detail = 24
 radius_bottom_left = 16
@@ -215,7 +220,7 @@ offset_top = 26.0
 offset_right = -35.0
 offset_bottom = 90.0
 grow_horizontal = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_r1h8h")
+theme_override_styles/panel = SubResource("StyleBoxFlat_yxv84")
 script = ExtResource("1_52rat")
 texture = ExtResource("3_5r7jo")
 metadata/_custom_type_script = "uid://ch0gf7680dole"
@@ -277,7 +282,7 @@ offset_top = -7.356
 offset_right = 33.032
 offset_bottom = 8.644
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_5r7jo")
+theme_override_styles/panel = SubResource("StyleBoxFlat_pq0dt")
 script = ExtResource("1_52rat")
 radius_bottom_left = 2
 radius_bottom_right = 2
@@ -322,7 +327,7 @@ offset_top = -51.5
 offset_right = 158.0
 offset_bottom = 76.5
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_dip1f")
+theme_override_styles/panel = SubResource("StyleBoxFlat_sotf4")
 script = ExtResource("1_52rat")
 corner_detail = 24
 radius_bottom_left = 100
@@ -477,9 +482,6 @@ offset_bottom = 327.0
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PlayScore" parent="GameDataControl/PlaysControl/PlayListControl/PlayListScrollContainer/PlayListVBoxContainer" instance=ExtResource("10_cnbv1")]
-layout_mode = 2
-
 [node name="BeatmapInfoControl" type="Control" parent="GameDataControl"]
 layout_mode = 1
 anchors_preset = 1
@@ -507,7 +509,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 126.0
 grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ki8p0")
+theme_override_styles/panel = SubResource("StyleBoxFlat_3wme8")
 script = ExtResource("1_52rat")
 radius_bottom_left = 0
 radius_bottom_right = 0
@@ -707,6 +709,7 @@ offset_right = 536.0
 offset_bottom = 127.06
 
 [node name="GameplayDetailsLabel" type="Label" parent="GameDataControl/BeatmapInfoControl/BgPanel/BeatmapContentControl"]
+layout_mode = 0
 offset_left = 37.0
 offset_top = 17.0
 offset_right = 173.0
