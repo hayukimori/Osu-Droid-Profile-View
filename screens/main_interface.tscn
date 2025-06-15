@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bh0n57pgmndw7"]
+[gd_scene load_steps=38 format=3 uid="uid://bh0n57pgmndw7"]
 
 [ext_resource type="Script" uid="uid://ch0gf7680dole" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="1_52rat"]
 [ext_resource type="Texture2D" uid="uid://c5cd6oc4uo7dq" path="res://icon.svg" id="2_8ai3w"]
@@ -10,6 +10,16 @@
 [ext_resource type="Texture2D" uid="uid://e3bc8k7gg60m" path="res://assets/textures/icons/google_material_icons/sports_score_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg" id="8_vs076"]
 [ext_resource type="Texture2D" uid="uid://byndrboapcv4w" path="res://assets/textures/icons/google_material_icons/swap_horiz_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg" id="9_vs076"]
 [ext_resource type="PackedScene" uid="uid://ckcakf5p6oywd" path="res://ui_elements/play_score.tscn" id="10_cnbv1"]
+[ext_resource type="FontFile" uid="uid://b7850sj5d4yn1" path="res://assets/fonts/Aller/Aller_Rg.ttf" id="11_ru7g0"]
+[ext_resource type="FontFile" uid="uid://c7de2suwkiku" path="res://assets/fonts/Aller/Aller_Lt.ttf" id="12_vas7u"]
+[ext_resource type="FontFile" uid="uid://7tx2sc4056e7" path="res://assets/fonts/Aller/Aller_It.ttf" id="13_yesvj"]
+[ext_resource type="Texture2D" uid="uid://dk0futlkicq7v" path="res://assets/textures/icons/google_material_icons/circle_24dp_255290_FILL0_wght400_GRAD0_opsz24.svg" id="14_dmx7b"]
+[ext_resource type="Texture2D" uid="uid://dgymfm2mbj104" path="res://assets/textures/icons/google_material_icons/circle_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" id="14_s6r1y"]
+[ext_resource type="Texture2D" uid="uid://dynwbj0tlpe1w" path="res://assets/textures/icons/ui_icons/metronome.png" id="15_501lv"]
+[ext_resource type="Texture2D" uid="uid://dexrmw7j251nb" path="res://assets/textures/icons/google_material_icons/circle_24dp_75FB4C_FILL0_wght400_GRAD0_opsz24.svg" id="15_ttw16"]
+[ext_resource type="Texture2D" uid="uid://cdvd0oxhq87ok" path="res://assets/textures/icons/google_material_icons/circle_24dp_B89230_FILL0_wght400_GRAD0_opsz24.svg" id="16_1slhu"]
+[ext_resource type="Texture2D" uid="uid://d38uqi0d71er4" path="res://assets/textures/icons/ui_icons/slider.png" id="16_vrqfl"]
+[ext_resource type="Texture2D" uid="uid://bxs7ttm4ilw8r" path="res://assets/textures/icons/google_material_icons/close_24dp_FF0000_FILL0_wght400_GRAD0_opsz24.svg" id="17_y4wu6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ai3w"]
 corner_radius_top_left = 16
@@ -89,6 +99,25 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.211765, 0.435294, 0.988235, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ki8p0"]
+font = ExtResource("11_ru7g0")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_cnbv1"]
+font = ExtResource("12_vas7u")
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_yesvj"]
+font = ExtResource("11_ru7g0")
+font_size = 13
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yesvj"]
+bg_color = Color(0.0392157, 0.262745, 0.470588, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="MainInterface" type="Control"]
 layout_mode = 3
@@ -442,7 +471,7 @@ clip_children = 1
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 118.0
+offset_bottom = 126.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ki8p0")
 script = ExtResource("1_52rat")
@@ -450,7 +479,7 @@ radius_bottom_left = 0
 radius_bottom_right = 0
 metadata/_custom_type_script = "uid://ch0gf7680dole"
 
-[node name="Panel" type="Panel" parent="GameDataControl/BeatmapInfoControl/BgPanel"]
+[node name="DarkBgPanel" type="Panel" parent="GameDataControl/BeatmapInfoControl/BgPanel"]
 layout_mode = 0
 offset_right = 536.0
 offset_bottom = 126.0
@@ -462,3 +491,246 @@ offset_top = 126.0
 offset_right = 536.0
 offset_bottom = 130.0
 theme_override_styles/separator = SubResource("StyleBoxFlat_vas7u")
+
+[node name="BeatmapHeadInfo" type="Control" parent="GameDataControl/BeatmapInfoControl/BgPanel"]
+anchors_preset = 0
+offset_right = 536.0
+offset_bottom = 126.0
+
+[node name="BeatmapsetNameLabel" type="Label" parent="GameDataControl/BeatmapInfoControl/BgPanel/BeatmapHeadInfo"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 28.0
+offset_right = 513.0
+offset_bottom = 57.0
+text = "{beatmapset name}"
+label_settings = SubResource("LabelSettings_ki8p0")
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="Label" type="Label" parent="GameDataControl/BeatmapInfoControl/BgPanel/BeatmapHeadInfo"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 63.0
+offset_right = 513.0
+offset_bottom = 86.0
+text = "{artist}"
+label_settings = SubResource("LabelSettings_cnbv1")
+
+[node name="Label2" type="Label" parent="GameDataControl/BeatmapInfoControl/BgPanel/BeatmapHeadInfo"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 86.0
+offset_right = 513.0
+offset_bottom = 109.0
+text = "{diff name}"
+label_settings = SubResource("LabelSettings_cnbv1")
+
+[node name="GameplayDetails" type="Control" parent="GameDataControl/BeatmapInfoControl/BgPanel"]
+layout_mode = 1
+anchor_top = 0.351
+anchor_bottom = 0.351
+offset_top = 0.12999
+offset_right = 536.0
+offset_bottom = 115.13
+
+[node name="GameplayDetailsLabel" type="Label" parent="GameDataControl/BeatmapInfoControl/BgPanel/GameplayDetails"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 17.0
+offset_right = 173.0
+offset_bottom = 40.0
+text = "Gameplay Details"
+label_settings = SubResource("LabelSettings_yesvj")
+
+[node name="HitCirclesPanel" type="Panel" parent="GameDataControl/BeatmapInfoControl/BgPanel/GameplayDetails"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 50.0
+offset_right = 513.0
+offset_bottom = 77.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yesvj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameDataControl/BeatmapInfoControl/BgPanel/GameplayDetails/HitCirclesPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MapPerfectCountBtn" type="Button" parent="GameDataControl/BeatmapInfoControl/BgPanel/GameplayDetails/HitCirclesPanel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 16
+theme_override_fonts/font = ExtResource("13_yesvj")
+theme_override_font_sizes/font_size = 12
+text = "x 0"
+icon = ExtResource("14_dmx7b")
+flat = true
+
+[node name="MapGekiCountBtn" type="Button" parent="GameDataControl/BeatmapInfoControl/BgPanel/GameplayDetails/HitCirclesPanel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 16
+theme_override_fonts/font = ExtResource("13_yesvj")
+theme_override_font_sizes/font_size = 12
+text = "x 0"
+icon = ExtResource("14_dmx7b")
+flat = true
+
+[node name="MapGoodCountBtn" type="Button" parent="GameDataControl/BeatmapInfoControl/BgPanel/GameplayDetails/HitCirclesPanel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 16
+theme_override_fonts/font = ExtResource("13_yesvj")
+theme_override_font_sizes/font_size = 12
+text = "x 0"
+icon = ExtResource("15_ttw16")
+flat = true
+
+[node name="MapKatuCountBtn" type="Button" parent="GameDataControl/BeatmapInfoControl/BgPanel/GameplayDetails/HitCirclesPanel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 16
+theme_override_fonts/font = ExtResource("13_yesvj")
+theme_override_font_sizes/font_size = 12
+text = "x 0"
+icon = ExtResource("15_ttw16")
+flat = true
+
+[node name="MapBadCountBtn" type="Button" parent="GameDataControl/BeatmapInfoControl/BgPanel/GameplayDetails/HitCirclesPanel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 16
+theme_override_fonts/font = ExtResource("13_yesvj")
+theme_override_font_sizes/font_size = 12
+text = "x 0"
+icon = ExtResource("16_1slhu")
+flat = true
+
+[node name="MapMissCountBtn2" type="Button" parent="GameDataControl/BeatmapInfoControl/BgPanel/GameplayDetails/HitCirclesPanel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 16
+theme_override_fonts/font = ExtResource("13_yesvj")
+theme_override_font_sizes/font_size = 12
+text = "x 0"
+icon = ExtResource("17_y4wu6")
+flat = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameDataControl/BeatmapInfoControl/BgPanel/GameplayDetails"]
+layout_mode = 0
+offset_top = 89.0
+offset_right = 536.0
+offset_bottom = 115.0
+theme_override_font_sizes/bold_italics_font_size = 10
+theme_override_font_sizes/italics_font_size = 10
+theme_override_font_sizes/mono_font_size = 10
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 10
+bbcode_enabled = true
+text = "[center] [i] {username} [/i] got rank [color=silver]SS[/color] in this map. {MapPP} PP | {MapAccuracy} % [/center]"
+
+[node name="BeatmapContentControl" type="Control" parent="GameDataControl/BeatmapInfoControl/BgPanel"]
+layout_mode = 1
+anchor_top = 0.662
+anchor_bottom = 0.662
+offset_top = 0.0599823
+offset_right = 536.0
+offset_bottom = 127.06
+
+[node name="GameplayDetailsLabel" type="Label" parent="GameDataControl/BeatmapInfoControl/BgPanel/BeatmapContentControl"]
+offset_left = 37.0
+offset_top = 17.0
+offset_right = 173.0
+offset_bottom = 40.0
+text = "Beatmap Details"
+label_settings = SubResource("LabelSettings_yesvj")
+
+[node name="GridContainer" type="GridContainer" parent="GameDataControl/BeatmapInfoControl/BgPanel/BeatmapContentControl"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 40.0
+offset_right = 502.0
+offset_bottom = 108.0
+columns = 4
+
+[node name="AR_Btn" type="Button" parent="GameDataControl/BeatmapInfoControl/BgPanel/BeatmapContentControl/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/icon_max_width = 14
+theme_override_font_sizes/font_size = 12
+text = "[AR] 0.0"
+flat = true
+alignment = 0
+
+[node name="AC_Btn" type="Button" parent="GameDataControl/BeatmapInfoControl/BgPanel/BeatmapContentControl/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/icon_max_width = 14
+theme_override_font_sizes/font_size = 12
+text = "[AC] 0.0"
+flat = true
+alignment = 0
+
+[node name="CS_Btn" type="Button" parent="GameDataControl/BeatmapInfoControl/BgPanel/BeatmapContentControl/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/icon_max_width = 14
+theme_override_font_sizes/font_size = 12
+text = "[CS] 0.0"
+flat = true
+alignment = 0
+
+[node name="DR_Btn" type="Button" parent="GameDataControl/BeatmapInfoControl/BgPanel/BeatmapContentControl/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/icon_max_width = 14
+theme_override_font_sizes/font_size = 12
+text = "[DR] 0"
+flat = true
+alignment = 0
+
+[node name="BPM_Btn" type="Button" parent="GameDataControl/BeatmapInfoControl/BgPanel/BeatmapContentControl/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/icon_max_width = 14
+theme_override_font_sizes/font_size = 12
+text = "000"
+icon = ExtResource("15_501lv")
+flat = true
+alignment = 0
+
+[node name="DiffRating_Btn" type="Button" parent="GameDataControl/BeatmapInfoControl/BgPanel/BeatmapContentControl/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/icon_max_width = 14
+theme_override_font_sizes/font_size = 12
+text = "0.0"
+icon = ExtResource("7_d3k2c")
+flat = true
+alignment = 0
+
+[node name="CircleCount_Btn" type="Button" parent="GameDataControl/BeatmapInfoControl/BgPanel/BeatmapContentControl/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/icon_max_width = 14
+theme_override_font_sizes/font_size = 12
+text = "000"
+icon = ExtResource("14_s6r1y")
+flat = true
+alignment = 0
+
+[node name="SliderCount_Btn" type="Button" parent="GameDataControl/BeatmapInfoControl/BgPanel/BeatmapContentControl/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/icon_max_width = 14
+theme_override_font_sizes/font_size = 12
+text = "000"
+icon = ExtResource("16_vrqfl")
+flat = true
+alignment = 0
