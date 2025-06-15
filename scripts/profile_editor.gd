@@ -2,7 +2,7 @@ extends Node
 # Node task: Edit Profile Info
 
 
-enum AVATAR_REQUEST_METHOD {OLD, NEW}
+enum AVATAR_REQUEST_METHOD {OLD = 0, NEW = 1}
 
 var new_avatar_request_api_url: String = "https://new.osudroid.moe/api2/frontend/avatar/userid/%d"
 var old_avatar_request_api_url: String = "https://osudroid.moe/user/avatar/%d.png"
@@ -32,4 +32,29 @@ func update_profile() -> void:
 
 
 func get_user_pfp(uid: int) -> void:
+	# New http request, add it as a child
+	var http_request = HTTPRequest.new()
+	add_child(http_request)
+
+	http_request.request_completed.connect(self._http_image_requester_request_completed)
+
+	# Verify current request method, and launches corresponding method
+	match AVATAR_REQUEST_METHOD:
+		AVATAR_REQUEST_METHOD.OLD:
+			var error = http_request.request(old_avatar_request_api_url % uid)
+			if error != OK:
+				push_error("An error occurred in HTTP Request")
+
+		AVATAR_REQUEST_METHOD.NEW:
+			http_request.set_use_threads(true)
+			http_request.set_timeout(10)
+
+			var error = http_request.request(new_avatar_request_api_url % uid)
+			if error != OK:
+				push_error("An error occurred in HTTP Request")
+		_:
+			push_error("Invalid AVATAR_REQUEST_METHOD")
+	
+
+func _http_image_requester_request_completed(result, response_code, _headers, body):
 	pass
