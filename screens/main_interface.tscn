@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bh0n57pgmndw7"]
+[gd_scene load_steps=42 format=3 uid="uid://bh0n57pgmndw7"]
 
 [ext_resource type="Script" uid="uid://ch0gf7680dole" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="1_52rat"]
 [ext_resource type="Texture2D" uid="uid://c5cd6oc4uo7dq" path="res://icon.svg" id="2_8ai3w"]
@@ -12,7 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://ckcakf5p6oywd" path="res://ui_elements/play_score.tscn" id="10_cnbv1"]
 [ext_resource type="FontFile" uid="uid://b7850sj5d4yn1" path="res://assets/fonts/Aller/Aller_Rg.ttf" id="11_ru7g0"]
 [ext_resource type="FontFile" uid="uid://c7de2suwkiku" path="res://assets/fonts/Aller/Aller_Lt.ttf" id="12_vas7u"]
+[ext_resource type="FontFile" uid="uid://448xxgbgvybj" path="res://assets/fonts/Aller/Aller_LtIt.ttf" id="13_ttw16"]
 [ext_resource type="FontFile" uid="uid://7tx2sc4056e7" path="res://assets/fonts/Aller/Aller_It.ttf" id="13_yesvj"]
+[ext_resource type="Texture2D" uid="uid://cg3ahjd6xqaox" path="res://assets/textures/icons/google_material_icons/content_copy_24dp_F3F3F3_FILL0_wght400_GRAD0_opsz24.svg" id="14_1slhu"]
 [ext_resource type="Texture2D" uid="uid://dk0futlkicq7v" path="res://assets/textures/icons/google_material_icons/circle_24dp_255290_FILL0_wght400_GRAD0_opsz24.svg" id="14_dmx7b"]
 [ext_resource type="Texture2D" uid="uid://dgymfm2mbj104" path="res://assets/textures/icons/google_material_icons/circle_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" id="14_s6r1y"]
 [ext_resource type="Texture2D" uid="uid://dynwbj0tlpe1w" path="res://assets/textures/icons/ui_icons/metronome.png" id="15_501lv"]
@@ -107,6 +109,16 @@ font_size = 24
 [sub_resource type="LabelSettings" id="LabelSettings_cnbv1"]
 font = ExtResource("12_vas7u")
 font_size = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1slhu"]
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_y4wu6"]
+font = ExtResource("13_ttw16")
+font_size = 12
 
 [sub_resource type="LabelSettings" id="LabelSettings_yesvj"]
 font = ExtResource("11_ru7g0")
@@ -378,9 +390,11 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_d3k2c")
 
 [node name="PlaysControl" type="Control" parent="GameDataControl"]
-anchors_preset = 0
-offset_right = 528.0
-offset_bottom = 384.0
+layout_mode = 1
+anchor_right = 0.477
+anchor_bottom = 0.967
+offset_right = -0.516052
+offset_bottom = 0.100983
 
 [node name="ListModePanel" type="Panel" parent="GameDataControl/PlaysControl"]
 layout_mode = 0
@@ -508,23 +522,60 @@ label_settings = SubResource("LabelSettings_ki8p0")
 clip_text = true
 text_overrun_behavior = 4
 
-[node name="Label" type="Label" parent="GameDataControl/BeatmapInfoControl/BgPanel/BeatmapHeadInfo"]
+[node name="ArtistLabel" type="Label" parent="GameDataControl/BeatmapInfoControl/BgPanel/BeatmapHeadInfo"]
 layout_mode = 0
-offset_left = 37.0
+offset_left = 38.0
 offset_top = 63.0
-offset_right = 513.0
+offset_right = 514.0
 offset_bottom = 86.0
 text = "{artist}"
 label_settings = SubResource("LabelSettings_cnbv1")
 
-[node name="Label2" type="Label" parent="GameDataControl/BeatmapInfoControl/BgPanel/BeatmapHeadInfo"]
+[node name="DiffNameLabel" type="Label" parent="GameDataControl/BeatmapInfoControl/BgPanel/BeatmapHeadInfo"]
 layout_mode = 0
-offset_left = 37.0
+offset_left = 38.0
 offset_top = 86.0
-offset_right = 513.0
+offset_right = 514.0
 offset_bottom = 109.0
 text = "{diff name}"
 label_settings = SubResource("LabelSettings_cnbv1")
+
+[node name="Status" type="Label" parent="GameDataControl/BeatmapInfoControl/BgPanel/BeatmapHeadInfo"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -127.0
+offset_top = 28.0
+offset_right = -17.0
+offset_bottom = 51.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1slhu")
+text = "{ beatmap_status }"
+label_settings = SubResource("LabelSettings_y4wu6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="GameDataControl/BeatmapInfoControl/BgPanel/BeatmapHeadInfo"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = -34.0
+offset_right = -17.0
+offset_bottom = -14.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/icon_max_width = 12
+theme_override_font_sizes/font_size = 10
+text = "{id}"
+icon = ExtResource("14_1slhu")
+flat = true
+alignment = 2
+icon_alignment = 2
 
 [node name="GameplayDetails" type="Control" parent="GameDataControl/BeatmapInfoControl/BgPanel"]
 layout_mode = 1
