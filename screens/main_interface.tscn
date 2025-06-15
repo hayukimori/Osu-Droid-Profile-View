@@ -1,8 +1,9 @@
-[gd_scene load_steps=43 format=3 uid="uid://bh0n57pgmndw7"]
+[gd_scene load_steps=44 format=3 uid="uid://bh0n57pgmndw7"]
 
 [ext_resource type="Script" uid="uid://ch0gf7680dole" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="1_52rat"]
 [ext_resource type="Script" uid="uid://d2qu2ud8h5337" path="res://scripts/main_interface.gd" id="1_y4wu6"]
 [ext_resource type="Texture2D" uid="uid://c5cd6oc4uo7dq" path="res://icon.svg" id="2_8ai3w"]
+[ext_resource type="Script" uid="uid://4blfyjm4h7j6" path="res://scripts/profile_editor.gd" id="2_21ah5"]
 [ext_resource type="Texture2D" uid="uid://cv5suenvxbfqu" path="res://assets/textures/country_flags/br.svg" id="3_5r7jo"]
 [ext_resource type="Texture2D" uid="uid://gbj3tjsqp0dq" path="res://assets/textures/icons/google_material_icons/language_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" id="4_r1h8h"]
 [ext_resource type="Texture2D" uid="uid://c2jkucyq40qd6" path="res://assets/textures/icons/google_material_icons/autorenew_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" id="5_dip1f"]
@@ -140,6 +141,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_y4wu6")
+
+[node name="ProfileEditor" type="Node" parent="." node_paths=PackedStringArray("username_label", "national_rank_label", "global_rank_label", "play_count_btn", "accuracy_btn", "pp_btn", "overall_score_btn", "country_flag_texture_rect", "rank_country_flag_texture_rect", "profile_picture_texture_rect")]
+script = ExtResource("2_21ah5")
+username_label = NodePath("../ProfileAreaControl/BasicInfoContainer/UserBasicInfo/UsernameLabel")
+national_rank_label = NodePath("../ProfileAreaControl/BasicInfoContainer/UserBasicInfo/Ranking/National/NationalRankLabel")
+global_rank_label = NodePath("../ProfileAreaControl/BasicInfoContainer/UserBasicInfo/Ranking/Global/GlobalRankLabel")
+play_count_btn = NodePath("../ProfileAreaControl/AdvInfoContainer/ButtonsHBoxContainer/PlayCount")
+accuracy_btn = NodePath("../ProfileAreaControl/AdvInfoContainer/ButtonsHBoxContainer/OverallAccuracy")
+pp_btn = NodePath("../ProfileAreaControl/AdvInfoContainer/ButtonsHBoxContainer/OverallPP")
+overall_score_btn = NodePath("../ProfileAreaControl/AdvInfoContainer/ButtonsHBoxContainer/OverallScore")
+country_flag_texture_rect = NodePath("../ProfileAreaControl/CountryFlagTextureRect")
+rank_country_flag_texture_rect = NodePath("../ProfileAreaControl/BasicInfoContainer/UserBasicInfo/Ranking/National/CountryFlag")
+profile_picture_texture_rect = NodePath("../ProfileAreaControl/BasicInfoContainer/ProfilePicture")
 
 [node name="BackgroundControl" type="Control" parent="."]
 layout_mode = 1
