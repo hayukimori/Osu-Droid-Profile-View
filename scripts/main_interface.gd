@@ -43,7 +43,7 @@ func updateAll(data: Dictionary) -> void:
 
 func _player_requester_rq_completed(result, _response_code, _headers, body):
 	if result != HTTPRequest.RESULT_SUCCESS:
-		push_error("Profile could'nt be downloaded")
+		push_error("Profile couldn't be downloaded")
 		return
 	
 	var string_body = body.get_string_from_utf8()

@@ -147,7 +147,7 @@ func get_user_pfp(uid: int) -> void:
 #######################################
 func _http_image_requester_request_completed(result, _response_code, _headers, body):
 	if result != HTTPRequest.RESULT_SUCCESS:
-		push_error("Image couldn't be downloaded")
+		push_error("Image couldn't be downloaded. Result: %d" % result)
 	
 	var image = Image.new()
 	var format = gen_tools.detect_image_format(body)
