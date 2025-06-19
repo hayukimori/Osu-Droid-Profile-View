@@ -6,7 +6,8 @@ class_name ProfileEditor
 
 enum AVATAR_REQUEST_METHOD {OLD, NEW = 1}
 
-var new_avatar_request_api_url: String = "https://new.osudroid.moe/api2/frontend/avatar/userid/%d"
+#NOTE: (?size=256) is required, if it's not included, it returns an error: `{'error': 'Invalid size'}`
+var new_avatar_request_api_url: String = "https://new.osudroid.moe/api2/frontend/avatar/userid/%d?size=256"
 var old_avatar_request_api_url: String = "https://osudroid.moe/user/avatar/%d.png"
 
 @export_category("User Info")
