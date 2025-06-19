@@ -4,7 +4,7 @@ class_name ProfileEditor
 # Node task: Edit Profile Info
 
 
-enum AVATAR_REQUEST_METHOD {OLD = 0, NEW = 1}
+enum AVATAR_REQUEST_METHOD {OLD, NEW = 1}
 
 var new_avatar_request_api_url: String = "https://new.osudroid.moe/api2/frontend/avatar/userid/%d"
 var old_avatar_request_api_url: String = "https://osudroid.moe/user/avatar/%d.png"
@@ -122,7 +122,7 @@ func get_user_pfp(uid: int) -> void:
 
 
 	# Verify current request method, and launches corresponding method
-	match AVATAR_REQUEST_METHOD:
+	match avatar_request_api_method:
 		AVATAR_REQUEST_METHOD.OLD:
 			var error = http_request.request(old_avatar_request_api_url % uid)
 			if error != OK:
