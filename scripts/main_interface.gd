@@ -91,11 +91,4 @@ func _player_requester_rq_completed(result, _response_code, _headers, body):
 
 
 func _on_user_search_foreground_submit_search(method:int, username:String = "", uid: int = 0) -> void:
-	# Methods:
-	# 0 - UID
-	# 1 - Username
-
-	print("Username received: %s" % username)
-	print("Uid received: %d" % uid)
-
 	getProfile(method, uid, username)

@@ -51,7 +51,10 @@ func search(method: int, username_id: String) -> void:
 
 
 func update_panel(model: Models, reason: String = "No reason.") -> void:
+	self.visible = true
 	search_status_control.visible = true
+	search_btn.disabled = false
+	uid_or_username_LE.editable = true
 
 	match model:
 		Models.LOADING: model_loading()
@@ -71,6 +74,9 @@ func model_loading() -> void:
 	ui_searching_btn.visible = true
 	ui_nf_btn.visible = false
 	ui_done_btn.visible = false
+
+	search_btn.disabled = true
+	uid_or_username_LE.editable = false
 
 func model_error(reason: String) -> void:
 	current_status_label.text = "%s" % reason
@@ -104,6 +110,8 @@ func model_done() -> void:
 
 	await get_tree().create_timer(2).timeout
 	search_status_control.visible = false
+	
+	self.visible = false
 
 
 func _process(delta: float) -> void:
