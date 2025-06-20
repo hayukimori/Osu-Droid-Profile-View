@@ -980,3 +980,5 @@ icon_alignment = 1
 [node name="StatusLabel" type="Label" parent="UserSearchForeground/SearchStatusControl/HBoxContainer"]
 layout_mode = 2
 text = "{current_message}"
+
+[connection signal="submit_search" from="UserSearchForeground" to="." method="_on_user_search_foreground_submit_search"]

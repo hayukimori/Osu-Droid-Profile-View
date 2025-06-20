@@ -5,6 +5,7 @@ enum SEARCH_TYPE { UID=0, USERNAME=1}
 @onready var profile_editor: ProfileEditor = $ProfileEditor
 @onready var list_controller: ListController = $ListController
 @onready var player_requester: HTTPRequest = $PlayerRequestHTTP
+@onready var user_search_foreground: UserSearchForeground = $UserSearchForeground
 
 @export var username_search_url: String = "https://new.osudroid.moe/api2/frontend/profile-username/%s"
 @export var uid_search_url: String = "https://new.osudroid.moe/api2/frontend/profile-uid/%d"
@@ -12,7 +13,6 @@ enum SEARCH_TYPE { UID=0, USERNAME=1}
 
 func _ready() -> void:
 	player_requester.connect("request_completed", self._player_requester_rq_completed)
-
 
 # This function calls profile_requester.request, using uid(int) or username(string)
 func getProfile(search_type: SEARCH_TYPE, uid: int = 0, username: String = "") -> void:
@@ -65,3 +65,12 @@ func _player_requester_rq_completed(result, _response_code, _headers, body):
 		return
 
 	updateAll(data)
+
+
+func _on_user_search_foreground_submit_search(method:int, username:String = "", uid: int = 0) -> void:
+	# Methods:
+	# 0 - UID
+	# 1 - Username
+	
+	var usf: UserSearchForeground = user_search_foreground
+	pass

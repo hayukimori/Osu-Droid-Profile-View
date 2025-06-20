@@ -2,7 +2,7 @@ extends Control
 class_name UserSearchForeground
 
 
-signal submit_search(method: int, username_id: String)
+signal submit_search(method: int, username: String, uid: int)
 
 
 @onready var ui_searching_btn: Button = $SearchStatusControl/HBoxContainer/SearhingStatus/SearchingBtn
@@ -25,7 +25,6 @@ var rotation_speed: float = 5.0
 
 
 
-
 func _ready() -> void:
 	search_status_control.visible = false
 	search_btn.pressed.connect(_search_event)
@@ -33,7 +32,19 @@ func _ready() -> void:
 
 
 func search(method: int, username_id: String) -> void:
-	submit_search.emit(method, username_id)
+
+	var username: String = ""
+	var uid: int = 0
+
+	match method:
+		0: # UID
+			if username_id.is_valid_int():
+				uid = int(username_id)
+		1: # Username
+			username = username_id
+
+		_: return # Unhandled
+	submit_search.emit(method, username, uid)
 
 
 func update_panel(model: Models, reason: String = "No reason.") -> void:
