@@ -17,7 +17,7 @@ signal submit_search(method: int, username: String, uid: int)
 @onready var current_method_ob: OptionButton = $CentralSearch/SearchMethodOptionButton
 @onready var search_btn: Button = $CentralSearch/AlternativeSearchButton
 
-enum Models { LOADING, ERROR, NOT_FOUND, DONE }
+enum Models { LOADING = 0, ERROR = 1, NOT_FOUND = 2, DONE = 3 }
 
 
 var searching: bool = false
@@ -33,6 +33,8 @@ func _ready() -> void:
 
 func search(method: int, username_id: String) -> void:
 
+	print_debug("username_id: %s" % username_id)
+
 	var username: String = ""
 	var uid: int = 0
 
@@ -40,6 +42,9 @@ func search(method: int, username_id: String) -> void:
 		0: # UID
 			if username_id.is_valid_int():
 				uid = int(username_id)
+			else:
+				update_panel(Models.ERROR, "Not an UID")
+				return
 		1: # Username
 			username = username_id
 

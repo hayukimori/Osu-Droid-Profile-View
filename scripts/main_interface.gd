@@ -11,6 +11,11 @@ enum SEARCH_TYPE { UID=0, USERNAME=1}
 @export var uid_search_url: String = "https://new.osudroid.moe/api2/frontend/profile-uid/%d"
 
 
+var en_model_error: UserSearchForeground.Models = user_search_foreground.Models.ERROR
+var en_model_done: UserSearchForeground.Models = user_search_foreground.Models.DONE
+
+
+
 func _ready() -> void:
 	player_requester.connect("request_completed", self._player_requester_rq_completed)
 
@@ -19,8 +24,8 @@ func getProfile(search_type: SEARCH_TYPE, uid: int = 0, username: String = "") -
 	var current_url: String = ""	
 
 	match search_type:
-		SEARCH_TYPE.UID: current_url = uid_search_url % uid
-		SEARCH_TYPE.USERNAME: current_url = uid_search_url % username
+		0: current_url = uid_search_url % uid
+		1: current_url = uid_search_url % username
 		_: push_error("Invalid search type"); return
 
 	print_debug(current_url)
@@ -40,30 +45,50 @@ func updateAll(data: Dictionary) -> void:
 
 
 func _player_requester_rq_completed(result, _response_code, _headers, body):
+	# Case 1: Profile not downloaded (any error from network, machine or url)
 	if result != HTTPRequest.RESULT_SUCCESS:
 		push_error("Profile couldn't be downloaded")
+
+		# Send to foreground as error
+		user_search_foreground.update_panel(en_model_error, "Profile couldn't be downloaded")
 		return
-	
+
 	var string_body = body.get_string_from_utf8()
+
+	# Case 2: Empty response from the server
 	if string_body.is_empty():
 		push_error("Profile data is empty.")
+
+		# Send to foreground as error
+		user_search_foreground.update_panel(en_model_error, "Profile data is empty")
 		return
 	
 	var json = JSON.new()
 	var parse_result = json.parse(string_body)
+
+	# Case 3: Not valid profile data/Json format
 	if parse_result != OK:
 		push_error("Couldn't parse the profile data.")
+		
+		# Send to foreground as error
+		user_search_foreground.update_panel(en_model_error, "Couldn't parse the profile data.")
 		return
 	
 	var data = json.get_data()
+
+	# Case 4: Profile has not user data, like UserId (uid)
 	if typeof(data) != TYPE_DICTIONARY or not data.has("UserId"):
 		push_error("Invalid profile data received.")
 
 		if data.has("error"):
 			push_error("Error in profile data: %s" % data.error)
 			# TODO: Add releasLoader(data.error) here
+		
+		# Send to foreground as error
+		user_search_foreground.update_panel(en_model_error, "Invalid profile data")
 		return
 
+	user_search_foreground.update_panel(en_model_done)
 	updateAll(data)
 
 
@@ -71,6 +96,8 @@ func _on_user_search_foreground_submit_search(method:int, username:String = "", 
 	# Methods:
 	# 0 - UID
 	# 1 - Username
-	
-	var usf: UserSearchForeground = user_search_foreground
-	pass
+
+	print("Username received: %s" % username)
+	print("Uid received: %d" % uid)
+
+	getProfile(method, uid, username)
