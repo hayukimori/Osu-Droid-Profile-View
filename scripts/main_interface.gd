@@ -11,9 +11,7 @@ enum SEARCH_TYPE { UID=0, USERNAME=1}
 
 
 func _ready() -> void:
-	#profile_editor.update_profile()
 	player_requester.connect("request_completed", self._player_requester_rq_completed)
-	getProfile(SEARCH_TYPE.UID, 220439, "hayukimori")
 
 
 # This function calls profile_requester.request, using uid(int) or username(string)
