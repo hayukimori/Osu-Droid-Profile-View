@@ -1,10 +1,11 @@
-[gd_scene load_steps=53 format=3 uid="uid://bh0n57pgmndw7"]
+[gd_scene load_steps=54 format=3 uid="uid://bh0n57pgmndw7"]
 
 [ext_resource type="Script" uid="uid://ch0gf7680dole" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="1_52rat"]
 [ext_resource type="Script" uid="uid://d2qu2ud8h5337" path="res://scripts/main_interface.gd" id="1_y4wu6"]
 [ext_resource type="Script" uid="uid://4blfyjm4h7j6" path="res://scripts/profile_editor.gd" id="2_21ah5"]
 [ext_resource type="Texture2D" uid="uid://cv5suenvxbfqu" path="res://assets/textures/country_flags/br.svg" id="3_5r7jo"]
 [ext_resource type="Script" uid="uid://l75cxcbes8p0" path="res://scripts/list_controller.gd" id="3_yxv84"]
+[ext_resource type="Script" uid="uid://by3nhyg38ym7h" path="res://scripts/osu_api_key_manager.gd" id="4_4goar"]
 [ext_resource type="Texture2D" uid="uid://gbj3tjsqp0dq" path="res://assets/textures/icons/google_material_icons/language_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" id="4_r1h8h"]
 [ext_resource type="Texture2D" uid="uid://c2jkucyq40qd6" path="res://assets/textures/icons/google_material_icons/autorenew_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" id="5_dip1f"]
 [ext_resource type="Texture2D" uid="uid://d3cxxulcofsu0" path="res://assets/textures/icons/google_material_icons/target_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" id="6_lslyt"]
@@ -31,7 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://bjklwd0juwjb" path="res://assets/textures/icons/ui_icons/qmark.svg" id="29_6nx5o"]
 [ext_resource type="Texture2D" uid="uid://dcxfqgpcwmvn8" path="res://assets/textures/icons/ui_icons/done.svg" id="30_4goar"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nx5o"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uru5t"]
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -46,7 +47,7 @@ colors = PackedColorArray(0.0708024, 0.299556, 0.973042, 1, 0.16474, 0.397743, 1
 gradient = SubResource("Gradient_5r7jo")
 fill_from = Vector2(0.00974026, 0.983766)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uru5t"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xj4s"]
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -56,14 +57,14 @@ anti_aliasing = false
 [sub_resource type="LabelSettings" id="LabelSettings_8ai3w"]
 font_size = 24
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xj4s"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3befh"]
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3befh"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdbiu"]
 corner_radius_top_left = 100
 corner_radius_top_right = 100
 corner_radius_bottom_right = 100
@@ -92,7 +93,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdbiu"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ie3xy"]
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 anti_aliasing = false
@@ -194,6 +195,9 @@ list_mode_btn = NodePath("../GameDataControl/PlaysControl/ListModePanel/Button")
 base_play_score = "uid://ckcakf5p6oywd"
 play_list_vbox = NodePath("../GameDataControl/PlaysControl/PlayListControl/PlayListScrollContainer/PlayListVBoxContainer")
 
+[node name="Osu!API_KeyManager" type="Node" parent="."]
+script = ExtResource("4_4goar")
+
 [node name="BackgroundControl" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -228,7 +232,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 180.0
 grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6nx5o")
+theme_override_styles/panel = SubResource("StyleBoxFlat_uru5t")
 script = ExtResource("1_52rat")
 corner_detail = 24
 radius_bottom_left = 16
@@ -250,7 +254,7 @@ offset_top = 26.0
 offset_right = -35.0
 offset_bottom = 90.0
 grow_horizontal = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_uru5t")
+theme_override_styles/panel = SubResource("StyleBoxFlat_3xj4s")
 script = ExtResource("1_52rat")
 texture = ExtResource("3_5r7jo")
 metadata/_custom_type_script = "uid://ch0gf7680dole"
@@ -312,7 +316,7 @@ offset_top = -7.356
 offset_right = 33.032
 offset_bottom = 8.644
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_3xj4s")
+theme_override_styles/panel = SubResource("StyleBoxFlat_3befh")
 script = ExtResource("1_52rat")
 radius_bottom_left = 2
 radius_bottom_right = 2
@@ -357,7 +361,7 @@ offset_top = -51.5
 offset_right = 158.0
 offset_bottom = 76.5
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_3befh")
+theme_override_styles/panel = SubResource("StyleBoxFlat_xdbiu")
 script = ExtResource("1_52rat")
 corner_detail = 24
 radius_bottom_left = 100
@@ -539,7 +543,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 126.0
 grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_xdbiu")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ie3xy")
 script = ExtResource("1_52rat")
 radius_bottom_left = 0
 radius_bottom_right = 0
