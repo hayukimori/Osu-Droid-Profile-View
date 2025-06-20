@@ -173,6 +173,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_y4wu6")
 
+[node name="Osu!API_KeyManager" type="Node" parent="."]
+script = ExtResource("4_4goar")
+
 [node name="ProfileEditor" type="Node" parent="." node_paths=PackedStringArray("username_label", "national_rank_label", "global_rank_label", "play_count_btn", "accuracy_btn", "pp_btn", "overall_score_btn", "country_flag_texture_rect", "rank_country_flag_texture_rect", "profile_picture_texture_rect")]
 script = ExtResource("2_21ah5")
 username_label = NodePath("../ProfileAreaControl/BasicInfoContainer/UserBasicInfo/UsernameLabel")
@@ -188,15 +191,14 @@ profile_picture_texture_rect = NodePath("../ProfileAreaControl/BasicInfoContaine
 avatar_request_api_method = 1
 default_profile_picture = "uid://bmrlr67xqyhr2"
 
-[node name="ListController" type="Node" parent="." node_paths=PackedStringArray("list_mode_label", "list_mode_btn", "play_list_vbox")]
+[node name="ListController" type="Node" parent="." node_paths=PackedStringArray("list_mode_label", "list_mode_btn", "play_list_vbox", "osu_key_manager")]
 script = ExtResource("3_yxv84")
 list_mode_label = NodePath("../GameDataControl/PlaysControl/ListModePanel/ListModeLabel")
 list_mode_btn = NodePath("../GameDataControl/PlaysControl/ListModePanel/Button")
 base_play_score = "uid://ckcakf5p6oywd"
 play_list_vbox = NodePath("../GameDataControl/PlaysControl/PlayListControl/PlayListScrollContainer/PlayListVBoxContainer")
-
-[node name="Osu!API_KeyManager" type="Node" parent="."]
-script = ExtResource("4_4goar")
+connect_to_osu = true
+osu_key_manager = NodePath("../Osu!API_KeyManager")
 
 [node name="BackgroundControl" type="Control" parent="."]
 layout_mode = 1
