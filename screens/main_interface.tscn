@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bh0n57pgmndw7"]
+[gd_scene load_steps=53 format=3 uid="uid://bh0n57pgmndw7"]
 
 [ext_resource type="Script" uid="uid://ch0gf7680dole" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="1_52rat"]
 [ext_resource type="Script" uid="uid://d2qu2ud8h5337" path="res://scripts/main_interface.gd" id="1_y4wu6"]
@@ -28,6 +28,8 @@
 [ext_resource type="Texture2D" uid="uid://bjjpcsil4eod3" path="res://assets/textures/icons/google_material_icons/search_24dp_F3F3F3_FILL1_wght400_GRAD0_opsz24.svg" id="25_yxv84"]
 [ext_resource type="Texture2D" uid="uid://eu33atev8djw" path="res://assets/textures/icons/ui_icons/searching.svg" id="27_3wme8"]
 [ext_resource type="Texture2D" uid="uid://onq4xd684vlx" path="res://assets/textures/icons/ui_icons/error.svg" id="28_3wme8"]
+[ext_resource type="Texture2D" uid="uid://bjklwd0juwjb" path="res://assets/textures/icons/ui_icons/qmark.svg" id="29_6nx5o"]
+[ext_resource type="Texture2D" uid="uid://dcxfqgpcwmvn8" path="res://assets/textures/icons/ui_icons/done.svg" id="30_4goar"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yxv84"]
 corner_radius_top_left = 16
@@ -961,6 +963,20 @@ icon = ExtResource("28_3wme8")
 flat = true
 icon_alignment = 1
 
-[node name="Label" type="Label" parent="UserSearchForeground/SearchStatusControl/HBoxContainer"]
+[node name="QuestionMarkBtn" type="Button" parent="UserSearchForeground/SearchStatusControl/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 24
+icon = ExtResource("29_6nx5o")
+flat = true
+icon_alignment = 1
+
+[node name="DoneBtn" type="Button" parent="UserSearchForeground/SearchStatusControl/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 24
+icon = ExtResource("30_4goar")
+flat = true
+icon_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="UserSearchForeground/SearchStatusControl/HBoxContainer"]
 layout_mode = 2
 text = "{current_message}"
