@@ -8,6 +8,8 @@ enum LIST_MODE { HISTORY = 0, TOP_PLAYS = 1 }
 @export var list_mode_btn: Button
 @export_file("*.tscn") var base_play_score
 @export var play_list_vbox: VBoxContainer
+@export var connect_to_osu: bool = false
+@export var osu_key_manager: OAuth2Helper
 
 var current_list_mode: LIST_MODE = LIST_MODE.HISTORY
 var current_loaded_plays: Array = []
@@ -21,9 +23,18 @@ var status_texts: Dictionary = {
 }
 
 
+var current_access_token: String = ""
+
 
 func _ready() -> void:
 	list_mode_btn.pressed.connect(swap_list_mode)
+
+
+	# Gets a access token
+	if connect_to_osu:
+		osu_key_manager.load_config()
+		current_access_token = await osu_key_manager.get_token()
+	
 
 
 
@@ -69,7 +80,7 @@ func gen_list(gameplay_data: Dictionary, list_mode: LIST_MODE) -> void:
 			map_pp = item.MapPP
 
 		var nsc = psi.instantiate()
-		nsc.search_beatmap_online = false
+		#nsc.search_beatmap_online = false
 
 		nsc.filename = item.Filename
 		nsc.mods = item.Mods
@@ -86,11 +97,20 @@ func gen_list(gameplay_data: Dictionary, list_mode: LIST_MODE) -> void:
 
 		nsc.map_accuracy = item.MapAccuracy
 		nsc.map_pp = map_pp
+		nsc.username = gameplay_data.Username
+		nsc.local_bm_hash = item.MapHash
+		
+		if connect_to_osu:
+			nsc.search_beatmap_online = true
+			nsc.access_token = current_access_token
+
 
 		# Add as a child (main scene)
 		play_list_vbox.add_child(nsc)
 		current_loaded_plays.append(nsc)
 
+	for play in current_loaded_plays:
+		play.send_info_to_panel.connect(self.send_to_panel)
 
 # swaps between the two items, if the current one is HISTORY, swaps it to TOP_PLAYS
 func swap_list_mode() -> void:
@@ -110,4 +130,8 @@ func clearLoadedPlays() -> void:
 	for play in current_loaded_plays:
 		play.queue_free()
 	current_loaded_plays.clear()
+	
+
+func send_to_panel(beatmap_data, raw_gameplay_data, current_texture, username) -> void:
+	pass
 	
