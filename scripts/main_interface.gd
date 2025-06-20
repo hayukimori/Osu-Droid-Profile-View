@@ -82,7 +82,6 @@ func _player_requester_rq_completed(result, _response_code, _headers, body):
 
 		if data.has("error"):
 			push_error("Error in profile data: %s" % data.error)
-			# TODO: Add releasLoader(data.error) here
 		
 		# Send to foreground as error
 		user_search_foreground.update_panel(en_model_error, "Invalid profile data")

@@ -33,8 +33,6 @@ func _ready() -> void:
 
 func search(method: int, username_id: String) -> void:
 
-	print_debug("username_id: %s" % username_id)
-
 	var username: String = ""
 	var uid: int = 0
 
