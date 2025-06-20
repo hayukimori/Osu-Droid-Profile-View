@@ -15,7 +15,7 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6804x"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dnr7j"]
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -47,7 +47,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6804x")
+theme_override_styles/panel = SubResource("StyleBoxFlat_dnr7j")
 script = ExtResource("1_8itik")
 texture = ExtResource("3_6xtlw")
 metadata/_custom_type_script = "uid://ch0gf7680dole"
