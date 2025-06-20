@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bh0n57pgmndw7"]
+[gd_scene load_steps=56 format=3 uid="uid://bh0n57pgmndw7"]
 
 [ext_resource type="Script" uid="uid://ch0gf7680dole" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="1_52rat"]
 [ext_resource type="Script" uid="uid://d2qu2ud8h5337" path="res://scripts/main_interface.gd" id="1_y4wu6"]
@@ -164,6 +164,13 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 expand_margin_left = 20.0
 expand_margin_right = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vx3wl"]
+bg_color = Color(0.0486262, 0.000132657, 0.0636482, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [node name="MainInterface" type="Control"]
 layout_mode = 3
@@ -991,5 +998,40 @@ icon_alignment = 1
 [node name="StatusLabel" type="Label" parent="UserSearchForeground/SearchStatusControl/HBoxContainer"]
 layout_mode = 2
 text = "{current_message}"
+
+[node name="UserConfigForeground" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UserConfigBG" type="Panel" parent="UserConfigForeground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OsuConfigsPanel" type="Panel" parent="UserConfigForeground/UserConfigBG"]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 105.0
+offset_right = 452.0
+offset_bottom = 553.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vx3wl")
+
+[node name="OsuLogoTexture" type="TextureRect" parent="UserConfigForeground/UserConfigBG/OsuConfigsPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.5
+offset_top = 45.0
+offset_right = 60.5
+offset_bottom = 173.0
+grow_horizontal = 2
 
 [connection signal="submit_search" from="UserSearchForeground" to="." method="_on_user_search_foreground_submit_search"]
