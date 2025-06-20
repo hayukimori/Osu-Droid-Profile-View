@@ -18,6 +18,7 @@ var en_model_nf: UserSearchForeground.Models = user_search_foreground.Models.NOT
 
 func _ready() -> void:
 	player_requester.connect("request_completed", self._player_requester_rq_completed)
+	user_search_foreground.visible = true
 
 # This function calls profile_requester.request, using uid(int) or username(string)
 func getProfile(search_type: SEARCH_TYPE, uid: int = 0, username: String = "") -> void:
