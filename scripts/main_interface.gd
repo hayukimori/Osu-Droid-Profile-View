@@ -13,7 +13,7 @@ enum SEARCH_TYPE { UID=0, USERNAME=1}
 
 var en_model_error: UserSearchForeground.Models = user_search_foreground.Models.ERROR
 var en_model_done: UserSearchForeground.Models = user_search_foreground.Models.DONE
-
+var en_model_nf: UserSearchForeground.Models = user_search_foreground.Models.NOT_FOUND
 
 
 func _ready() -> void:
@@ -81,9 +81,12 @@ func _player_requester_rq_completed(result, _response_code, _headers, body):
 
 		if data.has("error"):
 			push_error("Error in profile data: %s" % data.error)
-		
+			if "not found" in data.error:
+				user_search_foreground.update_panel(en_model_nf)
+				return
+
 		# Send to foreground as error
-		user_search_foreground.update_panel(en_model_error, "Invalid profile data")
+		user_search_foreground.update_panel(en_model_error, "Invalid profile data")		
 		return
 
 	user_search_foreground.update_panel(en_model_done)
