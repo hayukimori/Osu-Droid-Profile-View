@@ -25,10 +25,9 @@ func getProfile(search_type: SEARCH_TYPE, uid: int = 0, username: String = "") -
 
 	match search_type:
 		0: current_url = uid_search_url % uid
-		1: current_url = uid_search_url % username
+		1: current_url = username_search_url % username
 		_: push_error("Invalid search type"); return
 
-	print_debug(current_url)
 	var error = player_requester.request(current_url)
 
 	if error != OK:
