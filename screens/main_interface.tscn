@@ -197,7 +197,6 @@ list_mode_label = NodePath("../GameDataControl/PlaysControl/ListModePanel/ListMo
 list_mode_btn = NodePath("../GameDataControl/PlaysControl/ListModePanel/Button")
 base_play_score = "uid://ckcakf5p6oywd"
 play_list_vbox = NodePath("../GameDataControl/PlaysControl/PlayListControl/PlayListScrollContainer/PlayListVBoxContainer")
-connect_to_osu = true
 osu_key_manager = NodePath("../Osu!API_KeyManager")
 
 [node name="BackgroundControl" type="Control" parent="."]
