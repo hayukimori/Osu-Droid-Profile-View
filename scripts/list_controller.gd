@@ -54,11 +54,13 @@ func gen_list(gameplay_data: Dictionary, list_mode: LIST_MODE) -> void:
 	match list_mode:
 		0: 
 			data_scores = gameplay_data.Last50Scores
+			list_mode_label.text = status_texts.history
 			if data_scores.size() == 0:
 				list_mode_label.text = status_texts.empty_history; return
 
 		1: 
 			data_scores = gameplay_data.Top50Plays
+			list_mode_label.text = status_texts.top_plays
 			if data_scores.size() == 0:
 				list_mode_label.text = status_texts.empty_top_plays; return
 				
