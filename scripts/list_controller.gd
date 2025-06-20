@@ -109,6 +109,8 @@ func gen_list(gameplay_data: Dictionary, list_mode: LIST_MODE) -> void:
 		play_list_vbox.add_child(nsc)
 		current_loaded_plays.append(nsc)
 
+	for play in current_loaded_plays:
+		play.send_info_to_panel.connect(self.send_to_panel)
 
 # swaps between the two items, if the current one is HISTORY, swaps it to TOP_PLAYS
 func swap_list_mode() -> void:
@@ -128,4 +130,8 @@ func clearLoadedPlays() -> void:
 	for play in current_loaded_plays:
 		play.queue_free()
 	current_loaded_plays.clear()
+	
+
+func send_to_panel(beatmap_data, raw_gameplay_data, current_texture, username) -> void:
+	pass
 	
