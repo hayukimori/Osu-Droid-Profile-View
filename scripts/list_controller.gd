@@ -138,3 +138,4 @@ func clearLoadedPlays() -> void:
 
 func send_to_panel(beatmap_data, raw_gameplay_data, current_texture, username) -> void:
 	beatmap_info_controller.update_gameplay_details(raw_gameplay_data, username)
+	beatmap_info_controller.update_beatmap_data(beatmap_data, raw_gameplay_data, current_texture)

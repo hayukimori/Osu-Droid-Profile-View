@@ -10,7 +10,7 @@ extends Control
 @onready var artist_label: Label = $BgPanel/BeatmapHeadInfo/ArtistLabel
 @onready var diff_name_label: Label = $BgPanel/BeatmapHeadInfo/DiffNameLabel
 @onready var beatmap_status_label: Label = $BgPanel/BeatmapHeadInfo/Status
-@onready var beatmap_id_btn: Button = $BGPanel/BgPanel/BeatmapHeadInfo/IdBtn
+@onready var beatmap_id_btn: Button = $BgPanel/BeatmapHeadInfo/IdBtn
 @onready var beatmap_bg: TextureRectRounded = $BgPanel/BeatmapsetImage
 
 @onready var map_perfect : Button = $BgPanel/GameplayDetails/HitCirclesPanel/HBoxContainer/MapPerfectCountBtn
@@ -91,11 +91,19 @@ func update_beatmap_data(beatmap_info: Dictionary, raw_gameplay_data: Dictionary
 	
 
 	if beatmap_info == {}: # Empty beatmap, use gameplay details instead
+		print(raw_gameplay_data)
+
+
 		push_warning("beatmap_info is empty, using raw_gameplay_data instead...")
 		beatmapset_name = raw_gameplay_data.Filename
 		artist = "(please connect to osu! to get this info)"
 		diff_name = ""
-		beatmap_id_btn.text = raw_gameplay_data.MapHash
+
+
+		if raw_gameplay_data.MapHash != null:
+			beatmap_id_btn.text = raw_gameplay_data.MapHash
+		else:
+			beatmap_id_btn.text = "No Hash or ID"
 
 	else:
 		beatmapset_name = beatmap_info.beatmapset.title
