@@ -213,6 +213,8 @@ func set_beatmap_info() -> void:
 	btn_accuracy.text = "%.2f %%" % (map_accuracy * 100)
 	btn_map_pp.text = "%.2f" % map_pp
 	
+	current_texture = preload("res://assets/textures/alternative_images/play_score.png")
+
 	match map_rank:
 		"X": rank_texture_rect.texture = preload("res://assets/textures/icons/map_rank_icons/X.png")
 		"XH": rank_texture_rect.texture = preload("res://assets/textures/icons/map_rank_icons/XH.png")
