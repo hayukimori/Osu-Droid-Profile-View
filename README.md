@@ -19,3 +19,10 @@ Osu!Droid Profile View is a project made in godot that allows to search and view
 ### Downloads
 There are currently no downloads available, the reason is that the application is under development, and may contain bugs.
 
+
+
+## Disclaimer
+
+This project is an unofficial fan-made application for osu!droid and is not affiliated with or endorsed by ppy Ltd.  
+The osu! logo and the name "osu!" are trademarks of ppy Ltd., used here under the brand identity guidelines:  
+[https://osu.ppy.sh/wiki/en/Brand_identity_guidelines](https://osu.ppy.sh/wiki/en/Brand_identity_guidelines)
