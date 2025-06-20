@@ -91,9 +91,6 @@ func update_beatmap_data(beatmap_info: Dictionary, raw_gameplay_data: Dictionary
 	
 
 	if beatmap_info == {}: # Empty beatmap, use gameplay details instead
-		print(raw_gameplay_data)
-
-
 		push_warning("beatmap_info is empty, using raw_gameplay_data instead...")
 		beatmapset_name = raw_gameplay_data.Filename
 		artist = "(please connect to osu! to get this info)"
