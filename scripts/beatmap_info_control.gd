@@ -35,8 +35,7 @@ extends Control
 func _ready() -> void:
 	#beatmap_head_info_control.visible = false
 	#gameplay_details_control.visible = false
-	#beatmap_content_control.visible = false
-	pass
+	beatmap_content_control.visible = false
 
 func update_gameplay_details(gameplay_data: Dictionary, username: String) -> void:
 
@@ -84,7 +83,6 @@ func update_gameplay_details(gameplay_data: Dictionary, username: String) -> voi
 
 
 func update_beatmap_data(beatmap_info: Dictionary, raw_gameplay_data: Dictionary, current_texture: Texture) -> void:
-
 	var beatmapset_name: String = "No title."
 	var artist: String = "No Artist"
 	var diff_name: String = "No DiffName"
@@ -103,6 +101,10 @@ func update_beatmap_data(beatmap_info: Dictionary, raw_gameplay_data: Dictionary
 			beatmap_id_btn.text = "No Hash or ID"
 
 	else:
+
+		if beatmap_content_control.visible == false:
+			beatmap_content_control.visible = true
+
 		beatmapset_name = beatmap_info.beatmapset.title
 		beatmap_status_label.text = beatmap_info.status.to_upper()
 		diff_name = beatmap_info.version
@@ -134,6 +136,17 @@ func update_beatmap_data(beatmap_info: Dictionary, raw_gameplay_data: Dictionary
 				var style = beatmap_status_label.get("theme_override_styles/normal")
 				if style and style is StyleBoxFlat:
 					style.bg_color = Color(0.2, 0.2, 0.2)
+		
+
+		# Change beatmap details
+		beatmap_ar.text = "[AR] %.1f" % beatmap_info.ar
+		beatmap_ac.text = "[AC] %.2f" % beatmap_info.accuracy
+		beatmap_cs.text = "[CS] %d" % beatmap_info.cs
+		beatmap_dr.text = "[DR]  %d" % beatmap_info.drain
+		beatmap_bpm.text = "%d" % beatmap_info.bpm
+		beatmap_diff_rating.text = "%.2f" % beatmap_info.difficulty_rating
+		beatmap_circle_count.text = "%d" % beatmap_info.count_circles
+		beatmap_slider_count.text = "%d" % beatmap_info.count_sliders
 
 		beatmap_id_btn.text = "%d" % beatmap_info.id
 
