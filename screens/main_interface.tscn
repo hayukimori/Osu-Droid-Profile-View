@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://bh0n57pgmndw7"]
+[gd_scene load_steps=55 format=3 uid="uid://bh0n57pgmndw7"]
 
 [ext_resource type="Script" uid="uid://ch0gf7680dole" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="1_52rat"]
 [ext_resource type="Script" uid="uid://d2qu2ud8h5337" path="res://scripts/main_interface.gd" id="1_y4wu6"]
@@ -18,6 +18,7 @@
 [ext_resource type="FontFile" uid="uid://448xxgbgvybj" path="res://assets/fonts/Aller/Aller_LtIt.ttf" id="13_ttw16"]
 [ext_resource type="FontFile" uid="uid://7tx2sc4056e7" path="res://assets/fonts/Aller/Aller_It.ttf" id="13_yesvj"]
 [ext_resource type="Texture2D" uid="uid://cg3ahjd6xqaox" path="res://assets/textures/icons/google_material_icons/content_copy_24dp_F3F3F3_FILL0_wght400_GRAD0_opsz24.svg" id="14_1slhu"]
+[ext_resource type="Script" uid="uid://dlju0juyvx84h" path="res://scripts/beatmap_info_control.gd" id="14_adubh"]
 [ext_resource type="Texture2D" uid="uid://dk0futlkicq7v" path="res://assets/textures/icons/google_material_icons/circle_24dp_255290_FILL0_wght400_GRAD0_opsz24.svg" id="14_dmx7b"]
 [ext_resource type="Texture2D" uid="uid://dgymfm2mbj104" path="res://assets/textures/icons/google_material_icons/circle_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" id="14_s6r1y"]
 [ext_resource type="Texture2D" uid="uid://dynwbj0tlpe1w" path="res://assets/textures/icons/ui_icons/metronome.png" id="15_501lv"]
@@ -527,6 +528,7 @@ offset_top = 14.0
 offset_right = -18.0
 offset_bottom = 384.0
 grow_horizontal = 0
+script = ExtResource("14_adubh")
 
 [node name="BgPanel" type="Panel" parent="GameDataControl/BeatmapInfoControl"]
 layout_mode = 1
