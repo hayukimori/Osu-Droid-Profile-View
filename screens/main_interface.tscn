@@ -195,7 +195,7 @@ list_mode_btn = NodePath("../GameDataControl/PlaysControl/ListModePanel/Button")
 base_play_score = "uid://ckcakf5p6oywd"
 play_list_vbox = NodePath("../GameDataControl/PlaysControl/PlayListControl/PlayListScrollContainer/PlayListVBoxContainer")
 
-[node name="OsuAPI_KeyManager" type="Node" parent="."]
+[node name="Osu!API_KeyManager" type="Node" parent="."]
 script = ExtResource("4_4goar")
 
 [node name="BackgroundControl" type="Control" parent="."]
