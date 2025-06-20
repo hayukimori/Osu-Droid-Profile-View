@@ -192,13 +192,14 @@ profile_picture_texture_rect = NodePath("../ProfileAreaControl/BasicInfoContaine
 avatar_request_api_method = 1
 default_profile_picture = "uid://bmrlr67xqyhr2"
 
-[node name="ListController" type="Node" parent="." node_paths=PackedStringArray("list_mode_label", "list_mode_btn", "play_list_vbox", "osu_key_manager")]
+[node name="ListController" type="Node" parent="." node_paths=PackedStringArray("list_mode_label", "list_mode_btn", "play_list_vbox", "osu_key_manager", "beatmap_info_controller")]
 script = ExtResource("3_yxv84")
 list_mode_label = NodePath("../GameDataControl/PlaysControl/ListModePanel/ListModeLabel")
 list_mode_btn = NodePath("../GameDataControl/PlaysControl/ListModePanel/Button")
 base_play_score = "uid://ckcakf5p6oywd"
 play_list_vbox = NodePath("../GameDataControl/PlaysControl/PlayListControl/PlayListScrollContainer/PlayListVBoxContainer")
 osu_key_manager = NodePath("../Osu!API_KeyManager")
+beatmap_info_controller = NodePath("../GameDataControl/BeatmapInfoControl")
 
 [node name="BackgroundControl" type="Control" parent="."]
 layout_mode = 1
@@ -724,7 +725,7 @@ text = "x 0"
 icon = ExtResource("17_y4wu6")
 flat = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GameDataControl/BeatmapInfoControl/BgPanel/GameplayDetails"]
+[node name="VerboseRankRTL" type="RichTextLabel" parent="GameDataControl/BeatmapInfoControl/BgPanel/GameplayDetails"]
 layout_mode = 0
 offset_top = 89.0
 offset_right = 536.0

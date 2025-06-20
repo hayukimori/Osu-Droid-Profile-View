@@ -10,6 +10,7 @@ enum LIST_MODE { HISTORY = 0, TOP_PLAYS = 1 }
 @export var play_list_vbox: VBoxContainer
 @export var connect_to_osu: bool = false
 @export var osu_key_manager: OAuth2Helper
+@export var beatmap_info_controller: Control
 
 var current_list_mode: LIST_MODE = LIST_MODE.HISTORY
 var current_loaded_plays: Array = []
@@ -135,5 +136,4 @@ func clearLoadedPlays() -> void:
 	
 
 func send_to_panel(beatmap_data, raw_gameplay_data, current_texture, username) -> void:
-	pass
-	
+	beatmap_info_controller.update_gameplay_details(raw_gameplay_data, username)

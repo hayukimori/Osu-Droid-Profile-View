@@ -16,6 +16,8 @@ extends Control
 @onready var map_bad : Button = $BgPanel/GameplayDetails/HitCirclesPanel/HBoxContainer/MapBadCountBtn
 @onready var map_miss : Button = $BgPanel/GameplayDetails/HitCirclesPanel/HBoxContainer/MapMissCountBtn2
 
+@onready var verbose_rank_rtl = $BgPanel/GameplayDetails/VerboseRankRTL
+
 @onready var beatmap_ar : Button = $BgPanel/BeatmapContentControl/GridContainer/AR_Btn
 @onready var beatmap_ac : Button = $BgPanel/BeatmapContentControl/GridContainer/AC_Btn
 @onready var beatmap_cs : Button = $BgPanel/BeatmapContentControl/GridContainer/CS_Btn
@@ -27,6 +29,46 @@ extends Control
 
 
 func _ready() -> void:
-	beatmap_head_info_control.visible = false
-	gameplay_details_control.visible = false
-	beatmap_content_control.visible = false
+	#beatmap_head_info_control.visible = false
+	#gameplay_details_control.visible = false
+	#beatmap_content_control.visible = false
+	pass
+
+func update_gameplay_details(gameplay_data: Dictionary, username: String) -> void:
+	var map_pp = "0"
+	if gameplay_data.MapPP == null:
+		map_pp = "0"
+	else:
+		map_pp = "%.2ff" % gameplay_data.MapPP
+
+	# Verbose Rank (Rich Text)
+	var rank_color: String = "silver"
+	match gameplay_data.MapRank:
+		"X": rank_color = "gold"
+		"XH": rank_color = "silver"
+		"SH": rank_color = "silver"
+		"S": rank_color = "gold"
+		"A": rank_color = "green"
+		"B": rank_color = "blue"
+		"C": rank_color = "purple"
+		"D", "F": rank_color = "red"
+		_: rank_color = "silver"
+		
+
+	var data_for_text = {
+		"username": username,
+		"color": rank_color,
+		"MapRank": gameplay_data.MapRank,
+		"MapPP": map_pp,
+		"MapAccuracy": gameplay_data.MapAccuracy
+	}
+
+	var basetext = "[center] [i] {username} [/i] got rank [color=silver]{MapRank}[/color] in this map. {MapPP} PP | {MapAccuracy} % [/center]".format(data_for_text)
+	verbose_rank_rtl.text = basetext
+
+	map_perfect.text = "%d" % gameplay_data.MapPerfect
+	map_geki.text = "%d" %  gameplay_data.MapGeki
+	map_good.text = "%d" %  gameplay_data.MapGood
+	map_katu.text = "%d" %  gameplay_data.MapKatu
+	map_bad.text = "%d" % gameplay_data.MapBad
+	map_miss.text = "%d" %  gameplay_data.MapMiss
