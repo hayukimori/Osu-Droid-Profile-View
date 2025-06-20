@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://bh0n57pgmndw7"]
+[gd_scene load_steps=55 format=3 uid="uid://bh0n57pgmndw7"]
 
 [ext_resource type="Script" uid="uid://ch0gf7680dole" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="1_52rat"]
 [ext_resource type="Script" uid="uid://d2qu2ud8h5337" path="res://scripts/main_interface.gd" id="1_y4wu6"]
@@ -18,6 +18,7 @@
 [ext_resource type="FontFile" uid="uid://448xxgbgvybj" path="res://assets/fonts/Aller/Aller_LtIt.ttf" id="13_ttw16"]
 [ext_resource type="FontFile" uid="uid://7tx2sc4056e7" path="res://assets/fonts/Aller/Aller_It.ttf" id="13_yesvj"]
 [ext_resource type="Texture2D" uid="uid://cg3ahjd6xqaox" path="res://assets/textures/icons/google_material_icons/content_copy_24dp_F3F3F3_FILL0_wght400_GRAD0_opsz24.svg" id="14_1slhu"]
+[ext_resource type="Script" uid="uid://dlju0juyvx84h" path="res://scripts/beatmap_info_control.gd" id="14_adubh"]
 [ext_resource type="Texture2D" uid="uid://dk0futlkicq7v" path="res://assets/textures/icons/google_material_icons/circle_24dp_255290_FILL0_wght400_GRAD0_opsz24.svg" id="14_dmx7b"]
 [ext_resource type="Texture2D" uid="uid://dgymfm2mbj104" path="res://assets/textures/icons/google_material_icons/circle_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" id="14_s6r1y"]
 [ext_resource type="Texture2D" uid="uid://dynwbj0tlpe1w" path="res://assets/textures/icons/ui_icons/metronome.png" id="15_501lv"]
@@ -94,8 +95,8 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ie3xy"]
-corner_radius_top_left = 8
-corner_radius_top_right = 8
+corner_radius_top_left = 16
+corner_radius_top_right = 16
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ru7g0"]
@@ -120,10 +121,10 @@ font = ExtResource("12_vas7u")
 font_size = 14
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1slhu"]
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_y4wu6"]
 font = ExtResource("13_ttw16")
@@ -191,13 +192,14 @@ profile_picture_texture_rect = NodePath("../ProfileAreaControl/BasicInfoContaine
 avatar_request_api_method = 1
 default_profile_picture = "uid://bmrlr67xqyhr2"
 
-[node name="ListController" type="Node" parent="." node_paths=PackedStringArray("list_mode_label", "list_mode_btn", "play_list_vbox", "osu_key_manager")]
+[node name="ListController" type="Node" parent="." node_paths=PackedStringArray("list_mode_label", "list_mode_btn", "play_list_vbox", "osu_key_manager", "beatmap_info_controller")]
 script = ExtResource("3_yxv84")
 list_mode_label = NodePath("../GameDataControl/PlaysControl/ListModePanel/ListModeLabel")
 list_mode_btn = NodePath("../GameDataControl/PlaysControl/ListModePanel/Button")
 base_play_score = "uid://ckcakf5p6oywd"
 play_list_vbox = NodePath("../GameDataControl/PlaysControl/PlayListControl/PlayListScrollContainer/PlayListVBoxContainer")
 osu_key_manager = NodePath("../Osu!API_KeyManager")
+beatmap_info_controller = NodePath("../GameDataControl/BeatmapInfoControl")
 
 [node name="BackgroundControl" type="Control" parent="."]
 layout_mode = 1
@@ -527,6 +529,7 @@ offset_top = 14.0
 offset_right = -18.0
 offset_bottom = 384.0
 grow_horizontal = 0
+script = ExtResource("14_adubh")
 
 [node name="BgPanel" type="Panel" parent="GameDataControl/BeatmapInfoControl"]
 layout_mode = 1
@@ -548,6 +551,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ie3xy")
 script = ExtResource("1_52rat")
 radius_bottom_left = 0
 radius_bottom_right = 0
+radius_top_left = 16
+radius_top_right = 16
 metadata/_custom_type_script = "uid://ch0gf7680dole"
 
 [node name="DarkBgPanel" type="Panel" parent="GameDataControl/BeatmapInfoControl/BgPanel"]
@@ -572,7 +577,7 @@ offset_bottom = 126.0
 layout_mode = 0
 offset_left = 37.0
 offset_top = 28.0
-offset_right = 513.0
+offset_right = 409.0
 offset_bottom = 57.0
 text = "{beatmapset name}"
 label_settings = SubResource("LabelSettings_ki8p0")
@@ -602,18 +607,18 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -127.0
-offset_top = 28.0
-offset_right = -17.0
-offset_bottom = 51.0
+offset_left = -103.0
+offset_top = 24.0
+offset_right = -16.0
+offset_bottom = 47.0
 grow_horizontal = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_1slhu")
-text = "{ beatmap_status }"
+text = "{ STATUS }"
 label_settings = SubResource("LabelSettings_y4wu6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="GameDataControl/BeatmapInfoControl/BgPanel/BeatmapHeadInfo"]
+[node name="IdBtn" type="Button" parent="GameDataControl/BeatmapInfoControl/BgPanel/BeatmapHeadInfo"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -722,7 +727,7 @@ text = "x 0"
 icon = ExtResource("17_y4wu6")
 flat = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GameDataControl/BeatmapInfoControl/BgPanel/GameplayDetails"]
+[node name="VerboseRankRTL" type="RichTextLabel" parent="GameDataControl/BeatmapInfoControl/BgPanel/GameplayDetails"]
 layout_mode = 0
 offset_top = 89.0
 offset_right = 536.0

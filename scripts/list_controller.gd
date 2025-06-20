@@ -10,6 +10,7 @@ enum LIST_MODE { HISTORY = 0, TOP_PLAYS = 1 }
 @export var play_list_vbox: VBoxContainer
 @export var connect_to_osu: bool = false
 @export var osu_key_manager: OAuth2Helper
+@export var beatmap_info_controller: Control
 
 var current_list_mode: LIST_MODE = LIST_MODE.HISTORY
 var current_loaded_plays: Array = []
@@ -54,11 +55,13 @@ func gen_list(gameplay_data: Dictionary, list_mode: LIST_MODE) -> void:
 	match list_mode:
 		0: 
 			data_scores = gameplay_data.Last50Scores
+			list_mode_label.text = status_texts.history
 			if data_scores.size() == 0:
 				list_mode_label.text = status_texts.empty_history; return
 
 		1: 
 			data_scores = gameplay_data.Top50Plays
+			list_mode_label.text = status_texts.top_plays
 			if data_scores.size() == 0:
 				list_mode_label.text = status_texts.empty_top_plays; return
 				
@@ -99,6 +102,7 @@ func gen_list(gameplay_data: Dictionary, list_mode: LIST_MODE) -> void:
 		nsc.map_pp = map_pp
 		nsc.username = gameplay_data.Username
 		nsc.local_bm_hash = item.MapHash
+		nsc.raw_gameplay_data = item
 		
 		if connect_to_osu:
 			nsc.search_beatmap_online = true
@@ -133,5 +137,5 @@ func clearLoadedPlays() -> void:
 	
 
 func send_to_panel(beatmap_data, raw_gameplay_data, current_texture, username) -> void:
-	pass
-	
+	beatmap_info_controller.update_gameplay_details(raw_gameplay_data, username)
+	beatmap_info_controller.update_beatmap_data(beatmap_data, raw_gameplay_data, current_texture)

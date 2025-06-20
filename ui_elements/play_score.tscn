@@ -15,7 +15,7 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6804x"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dnr7j"]
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -33,9 +33,9 @@ corner_radius_bottom_left = 8
 font_size = 12
 
 [node name="PlayScore" type="Label"]
-custom_minimum_size = Vector2(0, 64)
+custom_minimum_size = Vector2(0, 75)
 offset_right = 445.0
-offset_bottom = 64.0
+offset_bottom = 75.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_cnbv1")
 script = ExtResource("1_6804x")
 
@@ -47,7 +47,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6804x")
+theme_override_styles/panel = SubResource("StyleBoxFlat_dnr7j")
 script = ExtResource("1_8itik")
 texture = ExtResource("3_6xtlw")
 metadata/_custom_type_script = "uid://ch0gf7680dole"
@@ -67,9 +67,9 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 9.0
-offset_top = -32.0
+offset_top = -31.5
 offset_right = 73.0
-offset_bottom = 32.0
+offset_bottom = 31.5
 grow_vertical = 2
 texture = ExtResource("2_6804x")
 expand_mode = 1
@@ -77,9 +77,9 @@ expand_mode = 1
 [node name="FilenameLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 80.0
-offset_top = 18.0
+offset_top = 23.0
 offset_right = 445.0
-offset_bottom = 47.0
+offset_bottom = 52.0
 text = "{filename}"
 label_settings = SubResource("LabelSettings_vs076")
 vertical_alignment = 1

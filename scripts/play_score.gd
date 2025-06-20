@@ -213,6 +213,8 @@ func set_beatmap_info() -> void:
 	btn_accuracy.text = "%.2f %%" % (map_accuracy * 100)
 	btn_map_pp.text = "%.2f" % map_pp
 	
+	current_texture = preload("res://assets/textures/alternative_images/play_score.png")
+
 	match map_rank:
 		"X": rank_texture_rect.texture = preload("res://assets/textures/icons/map_rank_icons/X.png")
 		"XH": rank_texture_rect.texture = preload("res://assets/textures/icons/map_rank_icons/XH.png")
@@ -245,11 +247,16 @@ func format_numbers_dots(number: int) -> String:
 
 
 func _on_send_info_to_panel_pressed() -> void:
-	if not data_ready and not image_ready:
-		await wait_data()
+	if search_beatmap_online:
+		if not data_ready and not image_ready:
+			await wait_data()
 
-	var beatmap_data_api = current_beatmap_data.duplicate()
-	send_info_to_panel.emit(beatmap_data_api, raw_gameplay_data, current_texture, username)
+		var beatmap_data_api = current_beatmap_data.duplicate()
+		send_info_to_panel.emit(beatmap_data_api, raw_gameplay_data, current_texture, username)
+	else:
+		send_info_to_panel.emit({}, raw_gameplay_data, current_texture, username)
+	
+	
 
 
 
