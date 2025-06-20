@@ -102,6 +102,7 @@ func gen_list(gameplay_data: Dictionary, list_mode: LIST_MODE) -> void:
 		nsc.map_pp = map_pp
 		nsc.username = gameplay_data.Username
 		nsc.local_bm_hash = item.MapHash
+		nsc.raw_gameplay_data = item
 		
 		if connect_to_osu:
 			nsc.search_beatmap_online = true

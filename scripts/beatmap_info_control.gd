@@ -1,5 +1,7 @@
 extends Control
 
+
+
 @onready var beatmap_head_info_control: Control = $BgPanel/BeatmapHeadInfo
 @onready var gameplay_details_control: Control = $BgPanel/GameplayDetails
 @onready var beatmap_content_control: Control = $BgPanel/BeatmapContentControl
@@ -8,6 +10,8 @@ extends Control
 @onready var artist_label: Label = $BgPanel/BeatmapHeadInfo/ArtistLabel
 @onready var diff_name_label: Label = $BgPanel/BeatmapHeadInfo/DiffNameLabel
 @onready var beatmap_status_label: Label = $BgPanel/BeatmapHeadInfo/Status
+@onready var beatmap_id_btn: Button = $BGPanel/BgPanel/BeatmapHeadInfo/IdBtn
+@onready var beatmap_bg: TextureRectRounded = $BgPanel/BeatmapsetImage
 
 @onready var map_perfect : Button = $BgPanel/GameplayDetails/HitCirclesPanel/HBoxContainer/MapPerfectCountBtn
 @onready var map_geki : Button = $BgPanel/GameplayDetails/HitCirclesPanel/HBoxContainer/MapGekiCountBtn
@@ -35,11 +39,16 @@ func _ready() -> void:
 	pass
 
 func update_gameplay_details(gameplay_data: Dictionary, username: String) -> void:
+
+	if gameplay_data == {}:
+		push_error("Gameplay data is empty")
+		return
+
 	var map_pp = "0"
 	if gameplay_data.MapPP == null:
 		map_pp = "0"
 	else:
-		map_pp = "%.2ff" % gameplay_data.MapPP
+		map_pp = "%.2f" % gameplay_data.MapPP
 
 	# Verbose Rank (Rich Text)
 	var rank_color: String = "silver"
@@ -59,11 +68,11 @@ func update_gameplay_details(gameplay_data: Dictionary, username: String) -> voi
 		"username": username,
 		"color": rank_color,
 		"MapRank": gameplay_data.MapRank,
-		"MapPP": map_pp,
-		"MapAccuracy": gameplay_data.MapAccuracy
+		"MapPP": map_pp, # Already a string
+		"MapAccuracy": "%.2f" % (gameplay_data.MapAccuracy * 100)
 	}
 
-	var basetext = "[center] [i] {username} [/i] got rank [color=silver]{MapRank}[/color] in this map. {MapPP} PP | {MapAccuracy} % [/center]".format(data_for_text)
+	var basetext = "[center] [i] {username} [/i] got rank [color={color}]{MapRank}[/color] in this map. {MapPP} PP | {MapAccuracy} % [/center]".format(data_for_text)
 	verbose_rank_rtl.text = basetext
 
 	map_perfect.text = "%d" % gameplay_data.MapPerfect
@@ -72,3 +81,64 @@ func update_gameplay_details(gameplay_data: Dictionary, username: String) -> voi
 	map_katu.text = "%d" %  gameplay_data.MapKatu
 	map_bad.text = "%d" % gameplay_data.MapBad
 	map_miss.text = "%d" %  gameplay_data.MapMiss
+
+
+func update_beatmap_data(beatmap_info: Dictionary, raw_gameplay_data: Dictionary, current_texture: Texture) -> void:
+
+	var beatmapset_name: String = "No title."
+	var artist: String = "No Artist"
+	var diff_name: String = "No DiffName"
+	
+
+	if beatmap_info == {}: # Empty beatmap, use gameplay details instead
+		push_warning("beatmap_info is empty, using raw_gameplay_data instead...")
+		beatmapset_name = raw_gameplay_data.Filename
+		artist = "(please connect to osu! to get this info)"
+		diff_name = ""
+		beatmap_id_btn.text = raw_gameplay_data.MapHash
+
+	else:
+		beatmapset_name = beatmap_info.beatmapset.title
+		beatmap_status_label.text = beatmap_info.status.to_upper()
+		diff_name = beatmap_info.version
+
+		# Change status text and it's color
+		match beatmap_info.status:
+			"ranked", "approved":
+				beatmap_status_label.add_theme_color_override("font_color", Color(0.2, 0.8, 0.2))
+				var style = beatmap_status_label.get("theme_override_styles/normal")
+				if style and style is StyleBoxFlat:
+					style.bg_color = Color(0.15, 0.5, 0.15)
+			"loved":
+				beatmap_status_label.add_theme_color_override("font_color", Color(0.8, 0.2, 0.8))
+				var style = beatmap_status_label.get("theme_override_styles/normal")
+				if style and style is StyleBoxFlat:
+					style.bg_color = Color(0.5, 0.15, 0.5)
+			"wip":
+				beatmap_status_label.add_theme_color_override("font_color", Color(0.8, 0.8, 0.2))
+				var style = beatmap_status_label.get("theme_override_styles/normal")
+				if style and style is StyleBoxFlat:
+					style.bg_color = Color(0.5, 0.5, 0.15)
+			"graveyard":
+				beatmap_status_label.add_theme_color_override("font_color", Color(0.8, 0.2, 0.2))
+				var style = beatmap_status_label.get("theme_override_styles/normal")
+				if style and style is StyleBoxFlat:
+					style.bg_color = Color(0.5, 0.15, 0.15)
+			_:
+				beatmap_status_label.add_theme_color_override("font_color", Color(1, 1, 1))
+				var style = beatmap_status_label.get("theme_override_styles/normal")
+				if style and style is StyleBoxFlat:
+					style.bg_color = Color(0.2, 0.2, 0.2)
+
+		beatmap_id_btn.text = "%d" % beatmap_info.id
+
+
+	# Set basic info to respective labels
+	beatmapset_name_label.text = beatmapset_name
+	artist_label.text = artist
+	diff_name_label.text = diff_name
+
+
+	# Updating image
+	if current_texture != null:
+		beatmap_bg.texture = current_texture
