@@ -61,7 +61,6 @@ func _ready() -> void:
 	set_beatmap_info()
 
 	if search_beatmap_online == true and access_token != "":
-		print("Search beatmap online")
 		http = HTTPRequest.new()
 		add_child(http)
 		await search_online()
@@ -91,7 +90,6 @@ func search_online() -> void:
 	var r_headers = response[2]
 	var body_bytes = response[3]
 
-	print(response)
 
 	if result != HTTPRequest.RESULT_SUCCESS:
 		push_error("Beatmap linker request failed with result: %s" % result)
