@@ -6,6 +6,7 @@ enum SEARCH_TYPE { UID=0, USERNAME=1}
 @onready var list_controller: ListController = $ListController
 @onready var player_requester: HTTPRequest = $PlayerRequestHTTP
 @onready var user_search_foreground: UserSearchForeground = $UserSearchForeground
+@onready var configs_foreground: Control = $UserConfigForeground
 
 @export var username_search_url: String = "https://new.osudroid.moe/api2/frontend/profile-username/%s"
 @export var uid_search_url: String = "https://new.osudroid.moe/api2/frontend/profile-uid/%d"
@@ -43,6 +44,10 @@ func updateAll(data: Dictionary) -> void:
 		list_controller.gen_list(data, 0)
 		
 
+func open_configs() -> void:
+	configs_foreground.load_ui()
+	configs_foreground.visible = true
+	
 
 func _player_requester_rq_completed(result, _response_code, _headers, body):
 	# Case 1: Profile not downloaded (any error from network, machine or url)
@@ -96,3 +101,7 @@ func _player_requester_rq_completed(result, _response_code, _headers, body):
 
 func _on_user_search_foreground_submit_search(method:int, username:String = "", uid: int = 0) -> void:
 	getProfile(method, uid, username)
+
+
+func _on_configs_button_pressed() -> void:
+	open_configs()
