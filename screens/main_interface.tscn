@@ -40,7 +40,7 @@
 [ext_resource type="StyleBox" uid="uid://fs11x558hgec" path="res://assets/stylebox/config_btn_normal.tres" id="36_ie3xy"]
 [ext_resource type="Texture2D" uid="uid://docb0ab3at08l" path="res://assets/textures/icons/google_material_icons/close_24dp_F3F3F3_FILL1_wght400_GRAD0_opsz24.svg" id="37_ie3xy"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xj4s"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvmbd"]
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -55,7 +55,7 @@ colors = PackedColorArray(0.0708024, 0.299556, 0.973042, 1, 0.16474, 0.397743, 1
 gradient = SubResource("Gradient_5r7jo")
 fill_from = Vector2(0.00974026, 0.983766)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3befh"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rcg4y"]
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -65,14 +65,14 @@ anti_aliasing = false
 [sub_resource type="LabelSettings" id="LabelSettings_8ai3w"]
 font_size = 24
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdbiu"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcuec"]
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ie3xy"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cpvcu"]
 corner_radius_top_left = 100
 corner_radius_top_right = 100
 corner_radius_bottom_right = 100
@@ -101,7 +101,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvmbd"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_peha3"]
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 anti_aliasing = false
@@ -401,7 +401,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 180.0
 grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_3xj4s")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jvmbd")
 script = ExtResource("1_52rat")
 corner_detail = 24
 radius_bottom_left = 16
@@ -423,7 +423,7 @@ offset_top = 26.0
 offset_right = -35.0
 offset_bottom = 90.0
 grow_horizontal = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_3befh")
+theme_override_styles/panel = SubResource("StyleBoxFlat_rcg4y")
 script = ExtResource("1_52rat")
 texture = ExtResource("3_5r7jo")
 metadata/_custom_type_script = "uid://ch0gf7680dole"
@@ -485,7 +485,7 @@ offset_top = -7.356
 offset_right = 33.032
 offset_bottom = 8.644
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_xdbiu")
+theme_override_styles/panel = SubResource("StyleBoxFlat_fcuec")
 script = ExtResource("1_52rat")
 radius_bottom_left = 2
 radius_bottom_right = 2
@@ -530,7 +530,7 @@ offset_top = -51.5
 offset_right = 158.0
 offset_bottom = 76.5
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ie3xy")
+theme_override_styles/panel = SubResource("StyleBoxFlat_cpvcu")
 script = ExtResource("1_52rat")
 corner_detail = 24
 radius_bottom_left = 100
@@ -713,7 +713,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 126.0
 grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jvmbd")
+theme_override_styles/panel = SubResource("StyleBoxFlat_peha3")
 script = ExtResource("1_52rat")
 radius_bottom_left = 0
 radius_bottom_right = 0
@@ -1169,6 +1169,7 @@ layout_mode = 2
 text = "{current_message}"
 
 [node name="UserConfigForeground" type="Control" parent="." node_paths=PackedStringArray("oa_helper")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
