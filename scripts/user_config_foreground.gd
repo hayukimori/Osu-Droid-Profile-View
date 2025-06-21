@@ -36,21 +36,22 @@ func load_settings() -> AppSettings:
 
 func load_ui() -> void:
 	var current_configs: AppSettings = load_settings()
+	var osu_config: Dictionary = get_osu_config_content()
 
+	if osu_config == {}:
+		return
+	
+	osu_client_id_le.text = osu_config.client_id
+	osu_secret_le.text = osu_config.client_secret
+	
+
+func reload_osu_web_api_btn(current_configs: AppSettings) -> void:
 	# Change "enable osu!web api" button text by current mode
 	if current_configs.enable_osu_web_api == false:
 		enable_owa_button.text = "Enable Osu!web API"
 	else:
 		enable_owa_button.text = "Disable Osu!web API"
-	
 
-	var osu_config: Dictionary = get_osu_config_content()
-	if osu_config == {}:
-		return
-	
-	osu_client_id_le.text = "%d" % osu_config.client_id
-	osu_secret_le.text = osu_config.client_secret
-	
 
 func get_osu_config_content() -> Dictionary:
 	# Get osu_config.json and load it's content
@@ -82,6 +83,24 @@ func get_osu_config_content() -> Dictionary:
 		return {}
 	
 	return data
+
+
+func swap_owa(overwrite_turn_off: bool = false) -> void:
+	var current_configs: AppSettings = load_settings()
+
+	if overwrite_turn_off:
+		current_configs.enable_osu_web_api = false
+		save_settings(current_configs)
+		reload_osu_web_api_btn(current_configs)
+		return
+	
+	var curr_owa: bool = current_configs.enable_osu_web_api
+	current_configs.enable_osu_web_api = not curr_owa
+	save_settings(current_configs)
+	reload_osu_web_api_btn(current_configs)
+
+	
+	
 
 
 func save_osu_oauth2() -> void:

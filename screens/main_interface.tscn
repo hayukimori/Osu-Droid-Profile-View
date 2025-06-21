@@ -1339,3 +1339,5 @@ icon_alignment = 1
 
 [connection signal="submit_search" from="UserSearchForeground" to="." method="_on_user_search_foreground_submit_search"]
 [connection signal="pressed" from="UserSearchForeground/CentralSearch/ConfigsButton" to="." method="_on_configs_button_pressed"]
+[connection signal="pressed" from="UserConfigForeground/UserConfigBG/OsuConfigsPanel/ApplicationConfigControl/SaveConfigBtn" to="UserConfigForeground" method="save_osu_oauth2"]
+[connection signal="pressed" from="UserConfigForeground/UserConfigBG/ApplicationSetupPanel/EnableOWA_Button" to="UserConfigForeground" method="swap_owa"]
