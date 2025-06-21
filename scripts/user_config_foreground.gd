@@ -7,6 +7,10 @@ extends Control
 @export var oa_helper: OAuth2Helper
 
 
+func _ready() -> void:
+	osu_client_id_le.max_length = 10
+
+
 func save_settings(settings: AppSettings) -> void:
 	var path := "user://app_settings.tres"
 	var error = ResourceSaver.save(settings, path)
@@ -79,3 +83,20 @@ func get_osu_config_content() -> Dictionary:
 	
 	return data
 
+
+func save_osu_oauth2() -> void:
+	if oa_helper == null:
+		push_error("No OAuth2Helper")
+		return
+
+	if osu_client_id_le.text == "" or osu_secret_le.text == "":
+		push_warning("Empty data entry. Turning off osu!web api...")
+		# TODO: Add osu!web API disable.
+
+	var client_id: String = osu_client_id_le.text
+	var client_secret: String = osu_secret_le.text
+
+	if not oa_helper.save_config(client_id, client_secret):
+		push_error("Couldn't save client configs")
+	else:
+		print("Configs saved!!")

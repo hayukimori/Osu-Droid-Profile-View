@@ -17,7 +17,7 @@ func _ready():
 
 
 # Saves a config file in osu_config.json.
-func save_config(c_id: int, c_sec: String) -> bool:
+func save_config(c_id: String, c_sec: String) -> bool:
 	var path = "user://osu_config.json"
 	var data = {
 		"client_id": c_id,
