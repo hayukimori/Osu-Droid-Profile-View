@@ -1,6 +1,6 @@
 
 <div align="center">
-<img src="readme_files/header_image.png" width=100%>
+<img src="readme_files/header_image.png" width=100% alt="osu!droid profile view (RNKV) image">
 </div>
 
 
@@ -13,7 +13,7 @@
 
 Osu!Droid Profile View is a project made in godot that allows to search and view profile info, like recent played beatmaps and player top plays.
 
-<img src="readme_files/tmp_image.png">
+<img src="readme_files/app_v2.png" alt="App Image">
 
 
 ### Downloads
