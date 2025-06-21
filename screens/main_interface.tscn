@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://bh0n57pgmndw7"]
+[gd_scene load_steps=83 format=3 uid="uid://bh0n57pgmndw7"]
 
 [ext_resource type="Script" uid="uid://ch0gf7680dole" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="1_52rat"]
 [ext_resource type="Script" uid="uid://d2qu2ud8h5337" path="res://scripts/main_interface.gd" id="1_y4wu6"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://gbj3tjsqp0dq" path="res://assets/textures/icons/google_material_icons/language_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" id="4_r1h8h"]
 [ext_resource type="Texture2D" uid="uid://c2jkucyq40qd6" path="res://assets/textures/icons/google_material_icons/autorenew_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" id="5_dip1f"]
 [ext_resource type="Texture2D" uid="uid://d3cxxulcofsu0" path="res://assets/textures/icons/google_material_icons/target_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" id="6_lslyt"]
+[ext_resource type="Texture2D" uid="uid://cnmp7qqmnwqbo" path="res://assets/textures/alternative_images/test_pattern.png" id="6_o5swb"]
 [ext_resource type="Texture2D" uid="uid://bmrlr67xqyhr2" path="res://assets/textures/osudroid_site/avatar.jpg" id="7_21ah5"]
 [ext_resource type="Texture2D" uid="uid://o0rh1t5k6nlj" path="res://assets/textures/icons/google_material_icons/star_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg" id="7_d3k2c"]
 [ext_resource type="Texture2D" uid="uid://e3bc8k7gg60m" path="res://assets/textures/icons/google_material_icons/sports_score_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg" id="8_vs076"]
@@ -48,13 +49,6 @@ corner_radius_bottom_left = 16
 corner_detail = 20
 anti_aliasing = false
 
-[sub_resource type="Gradient" id="Gradient_5r7jo"]
-colors = PackedColorArray(0.0708024, 0.299556, 0.973042, 1, 0.16474, 0.397743, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_r1h8h"]
-gradient = SubResource("Gradient_5r7jo")
-fill_from = Vector2(0.00974026, 0.983766)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rcg4y"]
 corner_radius_top_left = 8
 corner_radius_top_right = 8
@@ -73,29 +67,29 @@ corner_radius_bottom_left = 2
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cpvcu"]
-corner_radius_top_left = 100
-corner_radius_top_right = 100
-corner_radius_bottom_right = 100
-corner_radius_bottom_left = 100
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
 corner_detail = 20
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3k2c"]
-bg_color = Color(0.137255, 0.137255, 0.207843, 1)
+bg_color = Color(0, 0, 0, 0.627451)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vs076"]
-bg_color = Color(0, 0, 0, 0.425)
+bg_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cnbv1"]
-bg_color = Color(0.188235, 0.235294, 0.329412, 1)
+bg_color = Color(0, 0, 0.0352941, 0.552941)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -112,12 +106,12 @@ corner_radius_top_left = 16
 corner_radius_top_right = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vas7u"]
-bg_color = Color(0.211148, 0.433488, 0.988104, 1)
+bg_color = Color(0.0859693, 0.207614, 0.270634, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.211765, 0.435294, 0.988235, 1)
+border_color = Color(0.0862745, 0.207843, 0.270588, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ki8p0"]
 font = ExtResource("11_ru7g0")
@@ -142,29 +136,29 @@ font = ExtResource("11_ru7g0")
 font_size = 13
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yesvj"]
-bg_color = Color(0.0392157, 0.262745, 0.470588, 1)
+bg_color = Color(0.0859693, 0.207614, 0.270634, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85i11"]
-bg_color = Color(0.424303, 0.605424, 0.997562, 1)
+bg_color = Color(0.131625, 0.290652, 0.373173, 1)
 corner_radius_top_left = 64
 corner_radius_bottom_left = 64
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ps22"]
-bg_color = Color(0.381091, 0.573071, 0.997062, 1)
+bg_color = Color(0.17295, 0.36372, 0.46294, 1)
 corner_radius_top_left = 64
 corner_radius_bottom_left = 64
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iord0"]
-bg_color = Color(0, 0.125693, 0.934515, 1)
+bg_color = Color(0.0590314, 0.157911, 0.209105, 1)
 corner_radius_top_left = 64
 corner_radius_bottom_left = 64
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w57yn"]
-bg_color = Color(0.121141, 0.352697, 0.98436, 1)
+bg_color = Color(0.0859693, 0.207614, 0.270634, 1)
 corner_radius_top_left = 64
 corner_radius_bottom_left = 64
 
@@ -402,7 +396,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0745098, 0.0745098, 0.101961, 1)
+color = Color(0.129412, 0.113725, 0.137255, 1)
 
 [node name="ProfileAreaControl" type="Control" parent="."]
 layout_mode = 1
@@ -427,7 +421,8 @@ radius_bottom_left = 16
 radius_bottom_right = 16
 radius_top_left = 16
 radius_top_right = 16
-texture = SubResource("GradientTexture2D_r1h8h")
+texture = ExtResource("6_o5swb")
+expand_mode = 5
 metadata/_custom_type_script = "uid://ch0gf7680dole"
 
 [node name="CountryFlagTextureRect" type="Panel" parent="ProfileAreaControl"]
@@ -552,10 +547,10 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_cpvcu")
 script = ExtResource("1_52rat")
 corner_detail = 24
-radius_bottom_left = 100
-radius_bottom_right = 100
-radius_top_left = 100
-radius_top_right = 100
+radius_bottom_left = 24
+radius_bottom_right = 24
+radius_top_left = 24
+radius_top_right = 24
 texture = ExtResource("7_21ah5")
 metadata/_custom_type_script = "uid://ch0gf7680dole"
 
@@ -647,7 +642,7 @@ offset_bottom = 0.100983
 layout_mode = 0
 offset_left = 21.0
 offset_top = 14.0
-offset_right = 515.0
+offset_right = 541.0
 offset_bottom = 48.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_vs076")
 
@@ -691,13 +686,13 @@ expand_icon = true
 anchors_preset = 0
 offset_left = 27.0
 offset_top = 59.0
-offset_right = 507.0
+offset_right = 535.0
 offset_bottom = 386.0
 
 [node name="PlayListScrollContainer" type="ScrollContainer" parent="GameDataControl/PlaysControl/PlayListControl"]
 layout_mode = 0
 offset_left = -1.0
-offset_right = 480.0
+offset_right = 508.0
 offset_bottom = 327.0
 
 [node name="PlayListVBoxContainer" type="VBoxContainer" parent="GameDataControl/PlaysControl/PlayListControl/PlayListScrollContainer"]
@@ -738,6 +733,7 @@ radius_bottom_left = 0
 radius_bottom_right = 0
 radius_top_left = 16
 radius_top_right = 16
+stretch_mode = 6
 metadata/_custom_type_script = "uid://ch0gf7680dole"
 
 [node name="DarkBgPanel" type="Panel" parent="GameDataControl/BeatmapInfoControl/BgPanel"]
@@ -1042,9 +1038,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -48.0
-offset_top = 10.0
+offset_top = 41.0
 offset_right = 1.0
-offset_bottom = 59.0
+offset_bottom = 90.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/focus = SubResource("StyleBoxFlat_85i11")
