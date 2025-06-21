@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://bh0n57pgmndw7"]
+[gd_scene load_steps=80 format=3 uid="uid://bh0n57pgmndw7"]
 
 [ext_resource type="Script" uid="uid://ch0gf7680dole" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="1_52rat"]
 [ext_resource type="Script" uid="uid://d2qu2ud8h5337" path="res://scripts/main_interface.gd" id="1_y4wu6"]
@@ -296,6 +296,30 @@ font_size = 14
 font = ExtResource("11_ru7g0")
 font_size = 12
 font_color = Color(0.808011, 0.553002, 0.74107, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljafi"]
+bg_color = Color(0.272792, 0.2194, 0.326585, 1)
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fe4dt"]
+bg_color = Color(0.341189, 0.277956, 0.405078, 1)
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upgh3"]
+bg_color = Color(0.126326, 0.0961376, 0.156646, 1)
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+shadow_size = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7p4gk"]
 bg_color = Color(0.142355, 0.109546, 0.175314, 1)
@@ -1145,7 +1169,6 @@ layout_mode = 2
 text = "{current_message}"
 
 [node name="UserConfigForeground" type="Control" parent="." node_paths=PackedStringArray("oa_helper")]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1334,6 +1357,9 @@ offset_right = 81.0
 offset_bottom = 26.0
 grow_vertical = 2
 theme_override_constants/icon_max_width = 18
+theme_override_styles/focus = SubResource("StyleBoxFlat_ljafi")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fe4dt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_upgh3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_7p4gk")
 icon = ExtResource("37_ie3xy")
 icon_alignment = 1
