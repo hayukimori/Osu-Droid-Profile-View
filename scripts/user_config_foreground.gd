@@ -43,6 +43,7 @@ func load_ui() -> void:
 	
 	osu_client_id_le.text = osu_config.client_id
 	osu_secret_le.text = osu_config.client_secret
+	reload_osu_web_api_btn(current_configs)
 	
 
 func reload_osu_web_api_btn(current_configs: AppSettings) -> void:
