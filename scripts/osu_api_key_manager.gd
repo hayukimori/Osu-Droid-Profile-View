@@ -6,7 +6,7 @@ var token_data = {
 	"expires_at": 0
 }
 
-var client_id: int = 0
+var client_id: String = ""
 var client_secret: String = ""
 
 var http: HTTPRequest

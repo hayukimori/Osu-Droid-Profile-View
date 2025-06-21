@@ -333,7 +333,7 @@ profile_picture_texture_rect = NodePath("../ProfileAreaControl/BasicInfoContaine
 avatar_request_api_method = 1
 default_profile_picture = "uid://bmrlr67xqyhr2"
 
-[node name="ListController" type="Node" parent="." node_paths=PackedStringArray("list_mode_label", "list_mode_btn", "play_list_vbox", "osu_key_manager", "beatmap_info_controller")]
+[node name="ListController" type="Node" parent="." node_paths=PackedStringArray("list_mode_label", "list_mode_btn", "play_list_vbox", "osu_key_manager", "beatmap_info_controller", "config_node")]
 script = ExtResource("3_yxv84")
 list_mode_label = NodePath("../GameDataControl/PlaysControl/ListModePanel/ListModeLabel")
 list_mode_btn = NodePath("../GameDataControl/PlaysControl/ListModePanel/Button")
@@ -341,6 +341,7 @@ base_play_score = "uid://ckcakf5p6oywd"
 play_list_vbox = NodePath("../GameDataControl/PlaysControl/PlayListControl/PlayListScrollContainer/PlayListVBoxContainer")
 osu_key_manager = NodePath("../Osu!API_KeyManager")
 beatmap_info_controller = NodePath("../GameDataControl/BeatmapInfoControl")
+config_node = NodePath("../UserConfigForeground")
 
 [node name="BackgroundControl" type="Control" parent="."]
 layout_mode = 1
@@ -1339,5 +1340,6 @@ icon_alignment = 1
 
 [connection signal="submit_search" from="UserSearchForeground" to="." method="_on_user_search_foreground_submit_search"]
 [connection signal="pressed" from="UserSearchForeground/CentralSearch/ConfigsButton" to="." method="_on_configs_button_pressed"]
+[connection signal="api_changed" from="UserConfigForeground" to="ListController" method="change_connect_to_osu"]
 [connection signal="pressed" from="UserConfigForeground/UserConfigBG/OsuConfigsPanel/ApplicationConfigControl/SaveConfigBtn" to="UserConfigForeground" method="save_osu_oauth2"]
 [connection signal="pressed" from="UserConfigForeground/UserConfigBG/ApplicationSetupPanel/EnableOWA_Button" to="UserConfigForeground" method="swap_owa"]

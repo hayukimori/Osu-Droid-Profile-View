@@ -11,6 +11,7 @@ enum LIST_MODE { HISTORY = 0, TOP_PLAYS = 1 }
 @export var connect_to_osu: bool = false
 @export var osu_key_manager: OAuth2Helper
 @export var beatmap_info_controller: Control
+@export var config_node: ConfigsForeground
 
 var current_list_mode: LIST_MODE = LIST_MODE.HISTORY
 var current_loaded_plays: Array = []
@@ -30,8 +31,17 @@ var current_access_token: String = ""
 func _ready() -> void:
 	list_mode_btn.pressed.connect(swap_list_mode)
 
+	if config_node != null:
+		var current_settings: AppSettings = config_node.load_settings()
+		print(current_settings)
 
+		change_connect_to_osu(current_settings.enable_osu_web_api)
+
+
+func change_connect_to_osu(value: bool) -> void:
 	# Gets a access token
+	connect_to_osu = value 
+
 	if connect_to_osu:
 		osu_key_manager.load_config()
 		current_access_token = await osu_key_manager.get_token()

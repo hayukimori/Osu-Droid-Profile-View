@@ -1,4 +1,7 @@
 extends Control
+class_name ConfigsForeground
+
+signal api_changed(value: bool)
 
 @onready var enable_owa_button: Button = $UserConfigBG/ApplicationSetupPanel/EnableOWA_Button
 @onready var osu_client_id_le: LineEdit = $UserConfigBG/OsuConfigsPanel/ApplicationConfigControl/ClientID_LE
@@ -99,6 +102,8 @@ func swap_owa(overwrite_turn_off: bool = false) -> void:
 	current_configs.enable_osu_web_api = not curr_owa
 	save_settings(current_configs)
 	reload_osu_web_api_btn(current_configs)
+	
+	api_changed.emit(current_configs.enable_osu_web_api)
 
 	
 	
