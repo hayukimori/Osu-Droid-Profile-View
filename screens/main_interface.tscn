@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://bh0n57pgmndw7"]
+[gd_scene load_steps=75 format=3 uid="uid://bh0n57pgmndw7"]
 
 [ext_resource type="Script" uid="uid://ch0gf7680dole" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="1_52rat"]
 [ext_resource type="Script" uid="uid://d2qu2ud8h5337" path="res://scripts/main_interface.gd" id="1_y4wu6"]
@@ -34,6 +34,9 @@
 [ext_resource type="Texture2D" uid="uid://dcxfqgpcwmvn8" path="res://assets/textures/icons/ui_icons/done.svg" id="30_4goar"]
 [ext_resource type="Texture2D" uid="uid://ja0nh0lr2cxd" path="res://assets/textures/osu_related/osu!logo.png" id="33_uru5t"]
 [ext_resource type="FontFile" uid="uid://dfgqkdig3i84o" path="res://assets/fonts/Aller/Aller_Bd.ttf" id="34_3xj4s"]
+[ext_resource type="StyleBox" uid="uid://d0h2ut0xljtsc" path="res://screens/config_btn_hover.tres" id="35_xdbiu"]
+[ext_resource type="StyleBox" uid="uid://fs11x558hgec" path="res://assets/stylebox/config_btn_normal.tres" id="36_ie3xy"]
+[ext_resource type="Texture2D" uid="uid://docb0ab3at08l" path="res://assets/textures/icons/google_material_icons/close_24dp_F3F3F3_FILL1_wght400_GRAD0_opsz24.svg" id="37_ie3xy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xj4s"]
 corner_radius_top_left = 16
@@ -167,6 +170,15 @@ corner_radius_bottom_left = 16
 expand_margin_left = 20.0
 expand_margin_right = 20.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qmoy7"]
+bg_color = Color(0.046891, 0, 0.0625162, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.898375, 0.415717, 0.627741, 1)
+border_blend = true
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vx3wl"]
 bg_color = Color(0.0486262, 0.000132657, 0.0636482, 1)
 border_width_left = 3
@@ -202,20 +214,6 @@ font_color = Color(0.945098, 0.654902, 0.862745, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dsq4c"]
 bg_color = Color(0.945098, 0.654902, 0.862745, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljafi"]
-bg_color = Color(0.945098, 0.654902, 0.862745, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7p4gk"]
-bg_color = Color(0.796078, 0.235294, 0.478431, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -269,6 +267,41 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 expand_margin_left = 10.0
 expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ifi6"]
+bg_color = Color(0.046891, 0, 0.0625162, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.929412, 0.427451, 0.647059, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0.929641, 0.427451, 0.647288, 1)
+shadow_size = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_a6e75"]
+font = ExtResource("34_3xj4s")
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_3xj4s"]
+font = ExtResource("34_3xj4s")
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_3befh"]
+font = ExtResource("11_ru7g0")
+font_size = 12
+font_color = Color(0.808011, 0.553002, 0.74107, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7p4gk"]
+bg_color = Color(0.142355, 0.109546, 0.175314, 1)
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+shadow_size = 4
 
 [node name="MainInterface" type="Control"]
 layout_mode = 3
@@ -1114,13 +1147,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qmoy7")
 
 [node name="OsuConfigsPanel" type="Panel" parent="UserConfigForeground/UserConfigBG"]
-layout_mode = 0
-offset_left = 133.0
-offset_top = 165.0
-offset_right = 425.0
-offset_bottom = 527.0
+layout_mode = 1
+offset_left = 132.0
+offset_top = 156.0
+offset_right = 424.0
+offset_bottom = 518.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_vx3wl")
 
 [node name="logoShadowPanel" type="Panel" parent="UserConfigForeground/UserConfigBG/OsuConfigsPanel"]
@@ -1179,8 +1213,8 @@ offset_right = 235.0
 offset_bottom = 200.0
 theme_override_font_sizes/font_size = 12
 theme_override_styles/focus = SubResource("StyleBoxFlat_dsq4c")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ljafi")
-theme_override_styles/normal = SubResource("StyleBoxFlat_7p4gk")
+theme_override_styles/hover = ExtResource("35_xdbiu")
+theme_override_styles/normal = ExtResource("36_ie3xy")
 text = "Save Configuration"
 
 [node name="ClientID_Label" type="Label" parent="UserConfigForeground/UserConfigBG/OsuConfigsPanel/ApplicationConfigControl"]
@@ -1221,5 +1255,71 @@ theme_override_font_sizes/font_size = 12
 theme_override_styles/focus = SubResource("StyleBoxFlat_a6e75")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ano0v")
 secret = true
+
+[node name="ApplicationSetupPanel" type="Panel" parent="UserConfigForeground/UserConfigBG"]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 156.0
+offset_right = 1042.0
+offset_bottom = 516.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0ifi6")
+
+[node name="AppSetupLabel" type="Label" parent="UserConfigForeground/UserConfigBG/ApplicationSetupPanel"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 48.0
+offset_right = 233.0
+offset_bottom = 77.0
+text = "Application Setup"
+label_settings = SubResource("LabelSettings_a6e75")
+
+[node name="OsuWebAPIv2Label" type="Label" parent="UserConfigForeground/UserConfigBG/ApplicationSetupPanel"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 110.0
+offset_right = 233.0
+offset_bottom = 139.0
+text = "Osu!web API (v2)"
+label_settings = SubResource("LabelSettings_3xj4s")
+
+[node name="OsuWebAPIv2DescriptionLabel" type="Label" parent="UserConfigForeground/UserConfigBG/ApplicationSetupPanel"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 149.0
+offset_right = 564.0
+offset_bottom = 254.0
+text = "This application is currently using Osu!web API (v2) to get beatmap information. Like AR, Drain Rate, BPM and especially the background images.
+This requires OAuth2 client information, which you can configure on the screen on the left.
+
+NOTE: This setting is optional, and you can see the usage guidelines directly on the website: https://osu.ppy.sh/docs/index.html#terms-of-use"
+label_settings = SubResource("LabelSettings_3befh")
+autowrap_mode = 2
+
+[node name="EnableOWA_Button" type="Button" parent="UserConfigForeground/UserConfigBG/ApplicationSetupPanel"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 292.0
+offset_right = 185.0
+offset_bottom = 323.0
+theme_override_font_sizes/font_size = 12
+theme_override_styles/focus = ExtResource("35_xdbiu")
+theme_override_styles/hover = ExtResource("35_xdbiu")
+theme_override_styles/normal = ExtResource("36_ie3xy")
+text = "Enable Osu!web API"
+
+[node name="CloseButton" type="Button" parent="UserConfigForeground/UserConfigBG"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 33.0
+offset_top = -22.0
+offset_right = 81.0
+offset_bottom = 26.0
+grow_vertical = 2
+theme_override_constants/icon_max_width = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_7p4gk")
+icon = ExtResource("37_ie3xy")
+icon_alignment = 1
 
 [connection signal="submit_search" from="UserSearchForeground" to="." method="_on_user_search_foreground_submit_search"]
