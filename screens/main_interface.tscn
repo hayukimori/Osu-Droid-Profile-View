@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://bh0n57pgmndw7"]
+[gd_scene load_steps=84 format=3 uid="uid://bh0n57pgmndw7"]
 
 [ext_resource type="Script" uid="uid://ch0gf7680dole" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="1_52rat"]
 [ext_resource type="Script" uid="uid://d2qu2ud8h5337" path="res://scripts/main_interface.gd" id="1_y4wu6"]
@@ -147,6 +147,26 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85i11"]
+bg_color = Color(0.424303, 0.605424, 0.997562, 1)
+corner_radius_top_left = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ps22"]
+bg_color = Color(0.381091, 0.573071, 0.997062, 1)
+corner_radius_top_left = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iord0"]
+bg_color = Color(0, 0.125693, 0.934515, 1)
+corner_radius_top_left = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w57yn"]
+bg_color = Color(0.121141, 0.352697, 0.98436, 1)
+corner_radius_top_left = 64
+corner_radius_bottom_left = 64
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sdhkc"]
 bg_color = Color(0, 0, 0, 0.866667)
@@ -1015,6 +1035,26 @@ icon = ExtResource("16_vrqfl")
 flat = true
 alignment = 0
 
+[node name="SearchBtn" type="Button" parent="GameDataControl/BeatmapInfoControl/BgPanel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = 10.0
+offset_right = 1.0
+offset_bottom = 59.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_85i11")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8ps22")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iord0")
+theme_override_styles/normal = SubResource("StyleBoxFlat_w57yn")
+icon = ExtResource("25_yxv84")
+icon_alignment = 1
+
 [node name="PlayerRequestHTTP" type="HTTPRequest" parent="."]
 
 [node name="UserSearchForeground" type="Control" parent="."]
@@ -1365,6 +1405,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_7p4gk")
 icon = ExtResource("37_ie3xy")
 icon_alignment = 1
 
+[connection signal="pressed" from="GameDataControl/BeatmapInfoControl/BgPanel/SearchBtn" to="." method="_on_search_btn_pressed"]
 [connection signal="submit_search" from="UserSearchForeground" to="." method="_on_user_search_foreground_submit_search"]
 [connection signal="pressed" from="UserSearchForeground/CentralSearch/ConfigsButton" to="." method="_on_configs_button_pressed"]
 [connection signal="api_changed" from="UserConfigForeground" to="ListController" method="change_connect_to_osu"]

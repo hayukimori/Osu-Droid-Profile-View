@@ -105,3 +105,7 @@ func _on_user_search_foreground_submit_search(method:int, username:String = "", 
 
 func _on_configs_button_pressed() -> void:
 	open_configs()
+
+
+func _on_search_btn_pressed() -> void:
+	user_search_foreground.visible = true
