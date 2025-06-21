@@ -45,7 +45,7 @@ func updateAll(data: Dictionary) -> void:
 		
 
 func open_configs() -> void:
-	#configs_foreground.loadconfigs() # Not implemented
+	configs_foreground.load_ui()
 	configs_foreground.visible = true
 	
 

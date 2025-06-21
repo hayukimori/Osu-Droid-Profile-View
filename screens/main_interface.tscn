@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://bh0n57pgmndw7"]
+[gd_scene load_steps=77 format=3 uid="uid://bh0n57pgmndw7"]
 
 [ext_resource type="Script" uid="uid://ch0gf7680dole" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="1_52rat"]
 [ext_resource type="Script" uid="uid://d2qu2ud8h5337" path="res://scripts/main_interface.gd" id="1_y4wu6"]
@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://dcxfqgpcwmvn8" path="res://assets/textures/icons/ui_icons/done.svg" id="30_4goar"]
 [ext_resource type="Texture2D" uid="uid://ja0nh0lr2cxd" path="res://assets/textures/osu_related/osu!logo.png" id="33_uru5t"]
 [ext_resource type="FontFile" uid="uid://dfgqkdig3i84o" path="res://assets/fonts/Aller/Aller_Bd.ttf" id="34_3xj4s"]
+[ext_resource type="Script" uid="uid://bsdkdvhd161fp" path="res://scripts/user_config_foreground.gd" id="34_jvmbd"]
 [ext_resource type="StyleBox" uid="uid://d0h2ut0xljtsc" path="res://screens/config_btn_hover.tres" id="35_xdbiu"]
 [ext_resource type="StyleBox" uid="uid://fs11x558hgec" path="res://assets/stylebox/config_btn_normal.tres" id="36_ie3xy"]
 [ext_resource type="Texture2D" uid="uid://docb0ab3at08l" path="res://assets/textures/icons/google_material_icons/close_24dp_F3F3F3_FILL1_wght400_GRAD0_opsz24.svg" id="37_ie3xy"]
@@ -1150,6 +1151,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("34_jvmbd")
 
 [node name="UserConfigBG" type="Panel" parent="UserConfigForeground"]
 layout_mode = 1
