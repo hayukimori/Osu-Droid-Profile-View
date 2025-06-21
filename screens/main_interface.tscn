@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://bh0n57pgmndw7"]
+[gd_scene load_steps=76 format=3 uid="uid://bh0n57pgmndw7"]
 
 [ext_resource type="Script" uid="uid://ch0gf7680dole" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="1_52rat"]
 [ext_resource type="Script" uid="uid://d2qu2ud8h5337" path="res://scripts/main_interface.gd" id="1_y4wu6"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://eu33atev8djw" path="res://assets/textures/icons/ui_icons/searching.svg" id="27_3wme8"]
 [ext_resource type="Texture2D" uid="uid://onq4xd684vlx" path="res://assets/textures/icons/ui_icons/error.svg" id="28_3wme8"]
 [ext_resource type="Texture2D" uid="uid://bjklwd0juwjb" path="res://assets/textures/icons/ui_icons/qmark.svg" id="29_6nx5o"]
+[ext_resource type="Texture2D" uid="uid://kg803eovf22m" path="res://assets/textures/icons/google_material_icons/settings_24dp_F3F3F3_FILL1_wght400_GRAD0_opsz24.svg" id="29_vx3wl"]
 [ext_resource type="Texture2D" uid="uid://dcxfqgpcwmvn8" path="res://assets/textures/icons/ui_icons/done.svg" id="30_4goar"]
 [ext_resource type="Texture2D" uid="uid://ja0nh0lr2cxd" path="res://assets/textures/osu_related/osu!logo.png" id="33_uru5t"]
 [ext_resource type="FontFile" uid="uid://dfgqkdig3i84o" path="res://assets/fonts/Aller/Aller_Bd.ttf" id="34_3xj4s"]
@@ -1018,19 +1019,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -339.0
-offset_top = -37.0
-offset_right = 347.0
-offset_bottom = 27.0
+offset_left = -379.0
+offset_top = -32.0
+offset_right = 379.0
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_adubh")
 
 [node name="UiD_Username_LineEdit" type="LineEdit" parent="UserSearchForeground/CentralSearch"]
 layout_mode = 0
-offset_left = 34.0
+offset_left = 106.0
 offset_top = 15.0
-offset_right = 461.0
+offset_right = 533.0
 offset_bottom = 50.0
 theme_override_styles/focus = SubResource("StyleBoxFlat_4goar")
 theme_override_styles/read_only = SubResource("StyleBoxFlat_4goar")
@@ -1039,9 +1040,9 @@ placeholder_text = "Search for UID or Username"
 
 [node name="SearchMethodOptionButton" type="OptionButton" parent="UserSearchForeground/CentralSearch"]
 layout_mode = 0
-offset_left = 493.0
+offset_left = 565.0
 offset_top = 8.0
-offset_right = 605.0
+offset_right = 677.0
 offset_bottom = 56.0
 flat = true
 selected = 0
@@ -1053,11 +1054,21 @@ popup/item_1/id = 1
 
 [node name="AlternativeSearchButton" type="Button" parent="UserSearchForeground/CentralSearch"]
 layout_mode = 0
-offset_left = 608.0
+offset_left = 680.0
 offset_top = 4.0
-offset_right = 680.0
+offset_right = 752.0
 offset_bottom = 59.0
 icon = ExtResource("25_yxv84")
+flat = true
+icon_alignment = 1
+
+[node name="ConfigsButton" type="Button" parent="UserSearchForeground/CentralSearch"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 80.0
+offset_bottom = 60.0
+icon = ExtResource("29_vx3wl")
 flat = true
 icon_alignment = 1
 
@@ -1323,3 +1334,4 @@ icon = ExtResource("37_ie3xy")
 icon_alignment = 1
 
 [connection signal="submit_search" from="UserSearchForeground" to="." method="_on_user_search_foreground_submit_search"]
+[connection signal="pressed" from="UserSearchForeground/CentralSearch/ConfigsButton" to="." method="_on_configs_button_pressed"]
