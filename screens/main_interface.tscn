@@ -1343,3 +1343,4 @@ icon_alignment = 1
 [connection signal="api_changed" from="UserConfigForeground" to="ListController" method="change_connect_to_osu"]
 [connection signal="pressed" from="UserConfigForeground/UserConfigBG/OsuConfigsPanel/ApplicationConfigControl/SaveConfigBtn" to="UserConfigForeground" method="save_osu_oauth2"]
 [connection signal="pressed" from="UserConfigForeground/UserConfigBG/ApplicationSetupPanel/EnableOWA_Button" to="UserConfigForeground" method="swap_owa"]
+[connection signal="pressed" from="UserConfigForeground/UserConfigBG/CloseButton" to="UserConfigForeground" method="_on_close_button_pressed"]

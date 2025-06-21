@@ -125,3 +125,7 @@ func save_osu_oauth2() -> void:
 		push_error("Couldn't save client configs")
 	else:
 		print("Configs saved!!")
+
+
+func _on_close_button_pressed() -> void:
+	self.visible = false
