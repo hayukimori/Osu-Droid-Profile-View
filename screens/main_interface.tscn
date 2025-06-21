@@ -374,7 +374,6 @@ overall_score_btn = NodePath("../ProfileAreaControl/AdvInfoContainer/ButtonsHBox
 country_flag_texture_rect = NodePath("../ProfileAreaControl/CountryFlagTextureRect")
 rank_country_flag_texture_rect = NodePath("../ProfileAreaControl/BasicInfoContainer/UserBasicInfo/Ranking/National/CountryFlag")
 profile_picture_texture_rect = NodePath("../ProfileAreaControl/BasicInfoContainer/ProfilePicture")
-avatar_request_api_method = 1
 default_profile_picture = "uid://bmrlr67xqyhr2"
 
 [node name="ListController" type="Node" parent="." node_paths=PackedStringArray("list_mode_label", "list_mode_btn", "play_list_vbox", "osu_key_manager", "beatmap_info_controller", "config_node")]
