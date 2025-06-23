@@ -27,3 +27,7 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/TextureRectRounded/plugin.cfg")
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true
