@@ -633,10 +633,14 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_d3k2c")
 
 [node name="PlaysControl" type="Control" parent="GameDataControl"]
 layout_mode = 1
-anchor_right = 0.477
-anchor_bottom = 0.967
-offset_right = -0.516052
-offset_bottom = 0.100983
+anchor_left = 0.237
+anchor_top = 0.5
+anchor_right = 0.237
+anchor_bottom = 0.5
+offset_left = -262.596
+offset_top = -198.5
+offset_right = 265.404
+offset_bottom = 185.5
 
 [node name="ListModePanel" type="Panel" parent="GameDataControl/PlaysControl"]
 layout_mode = 0
@@ -701,13 +705,14 @@ size_flags_horizontal = 3
 
 [node name="BeatmapInfoControl" type="Control" parent="GameDataControl"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -554.0
-offset_top = 14.0
-offset_right = -18.0
-offset_bottom = 384.0
+anchor_left = 0.751
+anchor_top = 0.5
+anchor_right = 0.751
+anchor_bottom = 0.5
+offset_left = -278.108
+offset_top = -184.5
+offset_right = 257.892
+offset_bottom = 185.5
 grow_horizontal = 0
 script = ExtResource("14_adubh")
 
