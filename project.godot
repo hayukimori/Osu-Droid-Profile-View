@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Osu!Droid Profile View"
 config/description="Osu!Droid Profile View is a project made in godot that allows to search and view profile info, like recent played beatmaps and player top plays."
-config/version="v0.1"
+config/version="0.1.1"
 run/main_scene="uid://bh0n57pgmndw7"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/low_processor_mode=true
